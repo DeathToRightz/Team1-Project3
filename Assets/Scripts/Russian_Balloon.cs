@@ -19,6 +19,23 @@ public class Russian_Balloon : MonoBehaviour
         }
     }
 
-    
+    void SetUpExplosiveLever(GameObject[] incomingLevers)
+    {
+        switch (Random.Range(0, _arrayOfLevers.Length))
+        {
+            case 0:
+                Debug.Log("hi");
+                break;
+            case 1:
+                Debug.Log("Bye");
+                break;
+            default:
+                Debug.Log("Wee");
+                break;
+        }
+
+    }
 
 }
+
+
