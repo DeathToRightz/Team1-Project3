@@ -22,6 +22,7 @@ public class LevelOneInputManager : MonoBehaviour
 
         levelOneAction.MoveLeft.performed += ctx => levelOneInputScript.MoveLeft();
         levelOneAction.MoveRight.performed += ctx => levelOneInputScript.MoveRight();
+        levelOneAction.ChooseLever.performed += ctx => levelOneInputScript.ChooseLever();
     }
 
     // Update is called once per frame

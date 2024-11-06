@@ -6,13 +6,13 @@
             "id": "db6a3894-240c-4111-97cd-5e5266d4815e",
             "actions": [
                 {
-                    "name": "Press Button",
+                    "name": "ChooseLever",
                     "type": "Button",
                     "id": "04e7b6ee-99e2-4f79-a0da-b1b545515f90",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MoveLeft",
@@ -41,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Press Button",
+                    "action": "ChooseLever",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

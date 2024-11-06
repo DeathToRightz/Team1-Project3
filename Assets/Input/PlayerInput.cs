@@ -28,13 +28,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""db6a3894-240c-4111-97cd-5e5266d4815e"",
             ""actions"": [
                 {
-                    ""name"": ""Press Button"",
+                    ""name"": ""ChooseLever"",
                     ""type"": ""Button"",
                     ""id"": ""04e7b6ee-99e2-4f79-a0da-b1b545515f90"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": true
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""MoveLeft"",
@@ -63,7 +63,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Press Button"",
+                    ""action"": ""ChooseLever"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -667,7 +667,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 }");
         // LevelOne
         m_LevelOne = asset.FindActionMap("LevelOne", throwIfNotFound: true);
-        m_LevelOne_PressButton = m_LevelOne.FindAction("Press Button", throwIfNotFound: true);
+        m_LevelOne_ChooseLever = m_LevelOne.FindAction("ChooseLever", throwIfNotFound: true);
         m_LevelOne_MoveLeft = m_LevelOne.FindAction("MoveLeft", throwIfNotFound: true);
         m_LevelOne_MoveRight = m_LevelOne.FindAction("MoveRight", throwIfNotFound: true);
         // LevelTwo
@@ -741,14 +741,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // LevelOne
     private readonly InputActionMap m_LevelOne;
     private List<ILevelOneActions> m_LevelOneActionsCallbackInterfaces = new List<ILevelOneActions>();
-    private readonly InputAction m_LevelOne_PressButton;
+    private readonly InputAction m_LevelOne_ChooseLever;
     private readonly InputAction m_LevelOne_MoveLeft;
     private readonly InputAction m_LevelOne_MoveRight;
     public struct LevelOneActions
     {
         private @PlayerInput m_Wrapper;
         public LevelOneActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @PressButton => m_Wrapper.m_LevelOne_PressButton;
+        public InputAction @ChooseLever => m_Wrapper.m_LevelOne_ChooseLever;
         public InputAction @MoveLeft => m_Wrapper.m_LevelOne_MoveLeft;
         public InputAction @MoveRight => m_Wrapper.m_LevelOne_MoveRight;
         public InputActionMap Get() { return m_Wrapper.m_LevelOne; }
@@ -760,9 +760,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_LevelOneActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_LevelOneActionsCallbackInterfaces.Add(instance);
-            @PressButton.started += instance.OnPressButton;
-            @PressButton.performed += instance.OnPressButton;
-            @PressButton.canceled += instance.OnPressButton;
+            @ChooseLever.started += instance.OnChooseLever;
+            @ChooseLever.performed += instance.OnChooseLever;
+            @ChooseLever.canceled += instance.OnChooseLever;
             @MoveLeft.started += instance.OnMoveLeft;
             @MoveLeft.performed += instance.OnMoveLeft;
             @MoveLeft.canceled += instance.OnMoveLeft;
@@ -773,9 +773,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(ILevelOneActions instance)
         {
-            @PressButton.started -= instance.OnPressButton;
-            @PressButton.performed -= instance.OnPressButton;
-            @PressButton.canceled -= instance.OnPressButton;
+            @ChooseLever.started -= instance.OnChooseLever;
+            @ChooseLever.performed -= instance.OnChooseLever;
+            @ChooseLever.canceled -= instance.OnChooseLever;
             @MoveLeft.started -= instance.OnMoveLeft;
             @MoveLeft.performed -= instance.OnMoveLeft;
             @MoveLeft.canceled -= instance.OnMoveLeft;
@@ -970,7 +970,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public interface ILevelOneActions
     {
-        void OnPressButton(InputAction.CallbackContext context);
+        void OnChooseLever(InputAction.CallbackContext context);
         void OnMoveLeft(InputAction.CallbackContext context);
         void OnMoveRight(InputAction.CallbackContext context);
     }

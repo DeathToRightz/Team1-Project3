@@ -5,6 +5,7 @@ using UnityEngine;
 public class LevelOneInput : MonoBehaviour
 {
     [SerializeField] private Transform[] movePoints; //Array of points to move between
+    [SerializeField] public List<GameObject> _levers;
     [SerializeField] private float moveSpeed = 5f;
     private int currentPointIndex = 0; //Current target point
 
@@ -14,10 +15,12 @@ public class LevelOneInput : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string animationName;
     // Start is called before the first frame update
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
-        PlayAndDisableAnimator();
+        PlayAndDisableAnimator();       
     }
 
     public void PlayAndDisableAnimator()
@@ -26,10 +29,15 @@ public class LevelOneInput : MonoBehaviour
         StartCoroutine(DisableAnimatorAfterAnimation());
     }
 
+   /* public void DisableAnimator()
+    {
+        animator.enabled = false;
+    }*/
+
     private IEnumerator DisableAnimatorAfterAnimation()
     {
         // Wait until the animation has finished playing
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(2.2f); // YOU CAN USE AN EVENT 
         animator.enabled = false; // Disable the Animator component
     }
 
@@ -71,6 +79,12 @@ public class LevelOneInput : MonoBehaviour
             currentPointIndex++;
             shouldMoveToPoint = true;
         }
+    }
+
+
+    public void ChooseLever()
+    {
+        Debug.Log("Chose Lever");
     }
 
     private bool IsPlayerInsideMovementArea()
