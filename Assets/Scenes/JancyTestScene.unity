@@ -2818,12 +2818,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.345325, y: 2.841183, z: 11.766994}
-  m_Center: {x: 1.1726623, y: 0.29238856, z: -0.39225006}
+  m_Size: {x: 3.345325, y: 2.841183, z: 18.483192}
+  m_Center: {x: 1.1726623, y: 0.29238856, z: -0.15469408}
 --- !u!4 &879267066
 Transform:
   m_ObjectHideFlags: 0
@@ -4960,7 +4960,7 @@ Transform:
   m_GameObject: {fileID: 1770819909}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.04, y: 1.02, z: -0.09}
+  m_LocalPosition: {x: -1.27, y: 1.7, z: 6.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5007,8 +5007,9 @@ MonoBehaviour:
   - {fileID: 1832588178}
   moveSpeed: 5
   movementArea: {fileID: 879267065}
-  isInMovementArea: 0
   shouldMoveToPoint: 0
+  animator: {fileID: 1770819914}
+  animationName: WalkAnim
 --- !u!114 &1770819916
 MonoBehaviour:
   m_ObjectHideFlags: 0
