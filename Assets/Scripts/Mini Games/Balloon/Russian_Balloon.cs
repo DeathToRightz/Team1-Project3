@@ -23,7 +23,7 @@ public class Russian_Balloon : MonoBehaviour
     //Variable of a Randomize Bad Lever State that is called here
     public BalloonStateRandomizeBadLever _stateRandomizeBadLever = new BalloonStateRandomizeBadLever();
 
-
+    [SerializeField] public GameObject chosenLever = null;
     private void Awake()
     {
         //Current state for game starts as the Randomize Bad Lever State
@@ -51,7 +51,7 @@ public class Russian_Balloon : MonoBehaviour
 
     private void Update()
     {
-      //  _currentState.OnUpdateCurrentState(this);
+        _currentState.OnUpdateCurrentState(this);
     }
 }
 

@@ -2,8 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Randomize Bad Lever State that inherits from the Base State, using the functions defined there
+//But changing what in them
 public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
 {
+    //Starts by debugging the name of the current active state
+    //Then out of the array of levers from the Russian Balloon state choosing which one of them to give the Danger Tag
+    //Afterwards will automatically change to the choose lever state
     public override void OnStartState(Russian_Balloon incomingContext)
     {
         Debug.Log("Current state is: " + this);
@@ -26,10 +31,14 @@ public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
 
                 incomingContext._arrayOfLevers[3].tag = incomingContext.explosiveTagName;
                 break;
+            case 4:
+                incomingContext._arrayOfLevers[4].tag = incomingContext.explosiveTagName;
+                break;
             default:
                 Debug.LogWarning("Setting up explosive lever went outside of limit");
                 break;
-        }        
+        }
+        //Calls the Russian Balloon reference we get from the paramater and switches to the choose state lever
         incomingContext.OnTransitionState(incomingContext._stateChooseLever);
     }
 

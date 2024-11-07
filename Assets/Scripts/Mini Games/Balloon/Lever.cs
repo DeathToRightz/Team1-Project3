@@ -9,11 +9,13 @@ public class Lever : MonoBehaviour
     private LevelOneInput _playerMovementScript;
     private PlayerInput _playerInput;
     private InputAction _chooseLever;
+    private Russian_Balloon _balloonScript;
     
     private void Awake()
     {
        _playerInput = new PlayerInput();
        _playerMovementScript = GameObject.FindObjectOfType<LevelOneInput>();
+        _balloonScript = GameObject.FindFirstObjectByType<Russian_Balloon>();
     }
     private void OnEnable()
     {
@@ -29,7 +31,7 @@ public class Lever : MonoBehaviour
 
     private void OnLeverPressed(InputAction.CallbackContext context)
     {
-        if(Mathf.Approximately(_playerMovementScript.gameObject.transform.position.z,_position.position.z)) { Debug.Log(gameObject.name); }
+        if(Mathf.Approximately(_playerMovementScript.gameObject.transform.position.z,_position.position.z)) {_balloonScript.chosenLever = this.gameObject; }
         
         
     }

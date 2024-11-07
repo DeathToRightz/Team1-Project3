@@ -11,11 +11,13 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
 
     public override void OnTransitionState(Russian_Balloon incomingContext)
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)
     {
-        throw new System.NotImplementedException();
+         
+        if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.explosiveTagName) { Debug.Log("Kaboom"); }
+        
     }
 }
