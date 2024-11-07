@@ -474,6 +474,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 1232551753}
+--- !u!4 &100166823 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 24397735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &121406456
 Mesh:
   m_ObjectHideFlags: 0
@@ -839,17 +844,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14176a5a56b7f741a966816c8034160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints:
-  - {fileID: 1232551753}
-  - {fileID: 1566882182}
-  - {fileID: 2074068082}
-  - {fileID: 1000615703}
-  - {fileID: 310427900}
+  leverSelectionPoints:
+  - {fileID: 1810154559}
+  - {fileID: 1360159310}
+  - {fileID: 609749952}
+  - {fileID: 100166823}
+  - {fileID: 1580044006}
+  stagePoints: []
   moveSpeed: 5
-  movementArea: {fileID: 39542721}
+  movementArea: {fileID: 0}
   shouldMoveToPoint: 0
-  animator: {fileID: 0}
-  animationName: WalkAnim
+  isMoving: 0
 --- !u!114 &482883360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,7 +947,7 @@ Transform:
   m_GameObject: {fileID: 482883357}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.56, y: 1.13, z: -0.03999996}
+  m_LocalPosition: {x: 6.56, y: 1.13, z: -1.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1131,6 +1136,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 1000615703}
+--- !u!4 &609749952 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 1522713710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &638416345
 Mesh:
   m_ObjectHideFlags: 0
@@ -2975,17 +2985,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14176a5a56b7f741a966816c8034160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints:
-  - {fileID: 1232551753}
-  - {fileID: 1566882182}
-  - {fileID: 2074068082}
-  - {fileID: 1000615703}
-  - {fileID: 310427900}
+  leverSelectionPoints:
+  - {fileID: 1810154559}
+  - {fileID: 1360159310}
+  - {fileID: 609749952}
+  - {fileID: 100166823}
+  - {fileID: 1580044006}
+  stagePoints: []
   moveSpeed: 5
-  movementArea: {fileID: 39542721}
+  movementArea: {fileID: 0}
   shouldMoveToPoint: 0
-  animator: {fileID: 0}
-  animationName: WalkAnim
+  isMoving: 0
 --- !u!114 &1152947667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3078,7 +3088,7 @@ Transform:
   m_GameObject: {fileID: 1152947664}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.56, y: 1.13, z: -0.03999996}
+  m_LocalPosition: {x: 6.56, y: 1.13, z: -3.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3422,17 +3432,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14176a5a56b7f741a966816c8034160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints:
-  - {fileID: 1232551753}
-  - {fileID: 1566882182}
-  - {fileID: 2074068082}
-  - {fileID: 1000615703}
-  - {fileID: 310427900}
+  leverSelectionPoints:
+  - {fileID: 1810154559}
+  - {fileID: 1360159310}
+  - {fileID: 609749952}
+  - {fileID: 100166823}
+  - {fileID: 1580044006}
+  stagePoints: []
   moveSpeed: 5
-  movementArea: {fileID: 39542721}
+  movementArea: {fileID: 0}
   shouldMoveToPoint: 0
-  animator: {fileID: 0}
-  animationName: WalkAnim
+  isMoving: 0
 --- !u!114 &1226092352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3525,7 +3535,7 @@ Transform:
   m_GameObject: {fileID: 1226092349}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.56, y: 1.13, z: -0.04}
+  m_LocalPosition: {x: 6.56, y: 1.13, z: 2.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3797,6 +3807,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 310427900}
+--- !u!4 &1360159310 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 1900746957}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1363769130
 GameObject:
   m_ObjectHideFlags: 0
@@ -4809,6 +4824,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 1566882182}
+--- !u!4 &1580044006 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 2110667217}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1605288843
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,12 +4895,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03a4b77f801a2440aa2f86b0d9dcee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitPositions: []
-  players:
-  - {fileID: 1226092349}
-  - {fileID: 482883357}
-  - {fileID: 1152947664}
-  sideLength: 10
 --- !u!43 &1651488639
 Mesh:
   m_ObjectHideFlags: 0
@@ -5710,6 +5724,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 2074068082}
+--- !u!4 &1810154559 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 2110240644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1900746957
 PrefabInstance:
   m_ObjectHideFlags: 0
