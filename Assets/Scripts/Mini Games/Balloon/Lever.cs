@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Lever : MonoBehaviour
 {
     [SerializeField] Transform _position;
-    public LevelOneInput _playerMovementScript;
+    private LevelOneInput _playerMovementScript;
     private PlayerInput _playerInput;
     private InputAction _chooseLever;
     
@@ -15,11 +15,6 @@ public class Lever : MonoBehaviour
        _playerInput = new PlayerInput();
        _playerMovementScript = GameObject.FindObjectOfType<LevelOneInput>();
     }
-    private void Start()
-    {
-       Debug.Log(_position.position.z);
-    }
-
     private void OnEnable()
     {
         _playerInput.Enable();

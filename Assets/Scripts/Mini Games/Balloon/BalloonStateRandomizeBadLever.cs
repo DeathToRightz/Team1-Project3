@@ -6,6 +6,8 @@ public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
 {
     public override void OnStartState(Russian_Balloon incomingContext)
     {
+        Debug.Log("Current state is: " + this);
+
         switch (Random.Range(0, incomingContext._arrayOfLevers.Length))
         {
             case 0:
@@ -27,8 +29,7 @@ public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
             default:
                 Debug.LogWarning("Setting up explosive lever went outside of limit");
                 break;
-        }
-        Debug.Log("Lever Randomized");
+        }        
         incomingContext.OnTransitionState(incomingContext._stateChooseLever);
     }
 
