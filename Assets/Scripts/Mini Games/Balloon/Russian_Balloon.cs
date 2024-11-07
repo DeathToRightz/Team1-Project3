@@ -6,7 +6,7 @@ using UnityEngine;
 public class Russian_Balloon : MonoBehaviour
 {
     [SerializeField] public GameObject[] _arrayOfLevers;
-    [SerializeField] public string explosiveTagName;
+    [SerializeField] public string explosiveTagName;    
     BalloonMiniGamBaseState _currentState;
     public BalloonStateChooseLever _stateChooseLever = new BalloonStateChooseLever();
     public BalloonStateRandomizeBadLever _stateRandomizeBadLever = new BalloonStateRandomizeBadLever();
@@ -19,7 +19,7 @@ public class Russian_Balloon : MonoBehaviour
     }
     public void OnTransitionState(BalloonMiniGamBaseState stateToTransitionTo)
     {
-        _currentState.OnTransitionState(this);
+        //_currentState.OnTransitionState(this);
 
         _currentState = stateToTransitionTo;
 

@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelOneInput : MonoBehaviour
 {
     [SerializeField] private Transform[] movePoints; //Array of points to move between
-    [SerializeField] public List<GameObject> _levers;
     [SerializeField] private float moveSpeed = 5f;
     private int currentPointIndex = 0; //Current target point
 
@@ -80,13 +79,6 @@ public class LevelOneInput : MonoBehaviour
             shouldMoveToPoint = true;
         }
     }
-
-
-    public void ChooseLever()
-    {
-        Debug.Log("Chose Lever");
-    }
-
     private bool IsPlayerInsideMovementArea()
     {
         return movementArea.bounds.Contains(transform.position);
