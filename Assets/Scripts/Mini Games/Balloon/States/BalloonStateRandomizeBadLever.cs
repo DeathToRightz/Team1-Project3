@@ -13,7 +13,11 @@ public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
     {
         Debug.Log("Current state is: " + this);
 
-        switch (Random.Range(0, incomingContext._arrayOfLevers.Length))
+        // Ramdomly selects an index for the "bad" level
+        int badLeverIndex = Random.Range(0, incomingContext._arrayOfLevers.Length); //Jancy added this
+
+        // Sets the "bad" lever based on the badLeverIndex
+        switch (badLeverIndex) //Jancy added this
         {
             case 0:
 
@@ -38,6 +42,16 @@ public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
                 Debug.LogWarning("Setting up explosive lever went outside of limit");
                 break;
         }
+
+        //Set all other levers to "safe"
+        for (int i = 0; i < incomingContext._arrayOfLevers.Length; i++) // Jancy Added this
+        {
+            if (incomingContext._arrayOfLevers[i].tag != incomingContext.explosiveTagName)
+            {
+                incomingContext._arrayOfLevers[i].tag = incomingContext.safeTagName;
+            }
+        }
+
         //Calls the Russian Balloon reference we get from the paramater and switches to the choose state lever
         incomingContext.OnTransitionState(incomingContext._stateChooseLever);
     }

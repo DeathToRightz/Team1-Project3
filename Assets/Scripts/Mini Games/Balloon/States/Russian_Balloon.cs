@@ -11,7 +11,10 @@ public class Russian_Balloon : MonoBehaviour
     [SerializeField] public GameObject[] _arrayOfLevers;
 
     //The tag that is used to define which is the bad lever
-    [SerializeField] public string explosiveTagName;    
+    [SerializeField] public string explosiveTagName;
+
+    //The tag that is used to define the safe levers
+    [SerializeField] public string safeTagName;
 
     //Get the reference to the states in the BaseState, all states inherit from the Base State meaning it can be switched between each other
     //causing the state transitions
@@ -23,9 +26,15 @@ public class Russian_Balloon : MonoBehaviour
     //Variable of a Randomize Bad Lever State that is called here
     public BalloonStateRandomizeBadLever _stateRandomizeBadLever = new BalloonStateRandomizeBadLever();
 
+    //Variable of a Randomize Good Lever State that is called here
+    //public BallonStateRandomizeGoodLevers _stateRandomizeGoodLever = new BallonStateRandomizeGoodLevers(); // Jancy Added this
+
     [SerializeField] public GameObject chosenLever = null;
     private void Awake()
     {
+        //Current state for game starts as the Randomize Good Lever State
+        //_currentState = _stateRandomizeGoodLever; // Jancy Added this
+
         //Current state for game starts as the Randomize Bad Lever State
         _currentState = _stateRandomizeBadLever;
 
