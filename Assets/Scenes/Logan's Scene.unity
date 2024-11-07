@@ -1486,6 +1486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeverPress(PlaceHolder) 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3960999393031382690, guid: b3477f9a61653454f888709946386e48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5304957580357376021, guid: b3477f9a61653454f888709946386e48, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1762,6 +1766,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeverPress(PlaceHolder) 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3960999393031382690, guid: b3477f9a61653454f888709946386e48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5304957580357376021, guid: b3477f9a61653454f888709946386e48, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -1976,7 +1984,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 509830475}
-  _playerMovementScript: {fileID: 0}
 --- !u!43 &415407780
 Mesh:
   m_ObjectHideFlags: 0
@@ -3496,6 +3503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeverPress(PlaceHolder) 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3960999393031382690, guid: b3477f9a61653454f888709946386e48, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5304957580357376021, guid: b3477f9a61653454f888709946386e48, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -4040,7 +4051,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 2070732621}
-  _playerMovementScript: {fileID: 0}
 --- !u!1 &970153478
 GameObject:
   m_ObjectHideFlags: 0
@@ -4989,7 +4999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 1826365413}
-  _playerMovementScript: {fileID: 0}
 --- !u!43 &1275206218
 Mesh:
   m_ObjectHideFlags: 0
@@ -5191,6 +5200,7 @@ MonoBehaviour:
   - {fileID: 1548070579}
   - {fileID: 1264636902}
   explosiveTagName: Bad Lever
+  chosenLever: {fileID: 0}
 --- !u!4 &1324837731
 Transform:
   m_ObjectHideFlags: 0
@@ -5989,7 +5999,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 2116074744}
-  _playerMovementScript: {fileID: 0}
 --- !u!1 &1558629168
 GameObject:
   m_ObjectHideFlags: 0
@@ -7840,7 +7849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 970153479}
-  _playerMovementScript: {fileID: 0}
 --- !u!43 &1977173830
 Mesh:
   m_ObjectHideFlags: 0
