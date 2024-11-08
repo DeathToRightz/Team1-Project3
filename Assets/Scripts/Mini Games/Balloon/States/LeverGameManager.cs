@@ -8,6 +8,7 @@ public class LeverGameManager : MonoBehaviour
     [SerializeField] private Transform[] stagePositions;  // Positions on stage where players move through
     [SerializeField] private Transform[] exitPositions;  // Exit positions for eliminated players
     [SerializeField] private List<GameObject> players;   // List of all players
+    public Lever[] _arrayOfLevers;
 
     private float smoothMoveSpeed = 5f; // Define how fast the players move
     private float smoothMoveThreshold = 0.1f; // Threshold for when to stop moving a player
@@ -18,6 +19,7 @@ public class LeverGameManager : MonoBehaviour
 
     void Start()
     {
+        _arrayOfLevers = GameObject.FindObjectsOfType<Lever>();
         RandomizePlayerPositions(); // Shuffle players and set initial positions
         remainingPlayers = players.Count;
 
@@ -141,7 +143,10 @@ public class LeverGameManager : MonoBehaviour
         {
             //Debug.Log($"Moving last player {players[players.Count - 1].name} to the last exit position.");
             GameObject lastPlayer = players[players.Count - 1];
+            GameObject firstPlayer = players[players.Count - 3];
             Transform lastExitPosition = exitPositions[exitPositions.Length - 1];
+
+            for(int i = 0; i <= _arrayOfLevers.Length-1; i++) { _arrayOfLevers[i]._activePlayer = firstPlayer.GetComponent<LevelOneInput>(); }
 
             StartCoroutine(SmoothMovePlayer(lastPlayer, lastExitPosition));
         }

@@ -6,15 +6,16 @@ using UnityEngine.InputSystem;
 public class Lever : MonoBehaviour
 {
     [SerializeField] Transform _position;
-    private LevelOneInput _playerMovementScript;
+    [SerializeField] public LevelOneInput _activePlayer;
+    //private LevelOneInput _playerMovementScript;
     private PlayerInput _playerInput;
     private InputAction _chooseLever;
     private Russian_Balloon _balloonScript;
     [SerializeField] public bool leverActive = true;
+    private bool _playerInRange = false;
     private void Awake()
     {
-       _playerInput = new PlayerInput();
-       _playerMovementScript = GameObject.FindObjectOfType<LevelOneInput>();
+        _playerInput = new PlayerInput();
         _balloonScript = GameObject.FindFirstObjectByType<Russian_Balloon>();
     }
     private void OnEnable()
@@ -31,14 +32,6 @@ public class Lever : MonoBehaviour
 
     private void OnLeverPressed(InputAction.CallbackContext context)
     {
-        if(Mathf.Approximately(_playerMovementScript.gameObject.transform.position.z,_position.position.z)) {_balloonScript.chosenLever = this.gameObject; }
-     
-        
-    }
-
-
-    public void TurnOffLever()
-    {
-        this.leverActive = false;
+        if (Mathf.Abs(_position.position.z - _activePlayer.gameObject.transform.position.z) <= .1) { _balloonScript.chosenLever = this.gameObject; }
     }
 }
