@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2897859969116943651}
-  m_Layer: 0
+  - component: {fileID: 4982963808717274773}
+  m_Layer: 3
   m_Name: LeverPress(PlaceHolder)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,6 +35,27 @@ Transform:
   - {fileID: 6111346791805153724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4982963808717274773
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960999393031382690}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.495911, y: 3.966788, z: 6.49465}
+  m_Center: {x: -5.225935, y: 1.845394, z: 4.1300807}
 --- !u!1 &4107765901580204861
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,7 +70,7 @@ GameObject:
   - component: {fileID: 8093298703918476292}
   - component: {fileID: 3531048593110148600}
   - component: {fileID: 5562926653348424063}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -401,7 +423,7 @@ GameObject:
   - component: {fileID: 7973332648796925245}
   - component: {fileID: 722055092130899783}
   - component: {fileID: 250217283466252124}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2237,7 +2259,7 @@ GameObject:
   - component: {fileID: 6694345245010715533}
   - component: {fileID: 3048046561143693848}
   - component: {fileID: 6047551711101224390}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
