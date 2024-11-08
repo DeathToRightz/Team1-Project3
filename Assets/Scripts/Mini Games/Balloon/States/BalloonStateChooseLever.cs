@@ -8,6 +8,7 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
     public override void OnStartState(Russian_Balloon incomingContext)
     {
         Debug.Log("Current state is: " + this);
+        if (incomingContext.chosenLever) { incomingContext.chosenLever = null; }
     }
 
     public override void OnTransitionState(Russian_Balloon incomingContext)
@@ -17,9 +18,9 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
 
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)
     {
-         
-        if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.explosiveTagName) { Debug.Log("Kaboom"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
-        if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.safeTagName) { Debug.Log("Safe"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
-        
+        if (incomingContext.chosenLever) { incomingContext.chosenLever.GetComponent<Lever>().leverActive = false; incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
+        //if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.explosiveTagName) { Debug.Log("Kaboom"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
+        //if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.safeTagName) { Debug.Log("Safe"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
+
     }
 }
