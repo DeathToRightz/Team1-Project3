@@ -32,6 +32,10 @@ public class Lever : MonoBehaviour
 
     private void OnLeverPressed(InputAction.CallbackContext context)
     {
-        if (Mathf.Abs(_position.position.z - _activePlayer.gameObject.transform.position.z) <= .1) { _balloonScript.chosenLever = this.gameObject; }
+        if (leverActive)
+        {
+            if (Mathf.Abs(_position.position.z - _activePlayer.gameObject.transform.position.z) <= .1) { _balloonScript.chosenLever = this.gameObject; }
+        }
+        
     }
 }

@@ -20,9 +20,23 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)
     {
-       if(!ChoseBadLever(incomingContext.chosenLever,incomingContext)) { incomingContext.OnTransitionState(incomingContext._stateChooseLever); }
-    }
+        if (!ChoseBadLever(incomingContext.chosenLever, incomingContext))
+        {
+            incomingContext.OnTransitionState(incomingContext._stateChooseLever);
+        }
+        else
+        {
+            Debug.Log("Kaboom");
+            incomingContext.OnTransitionState(incomingContext._stateResetLevers);
+        }
 
+        if (CheckForAvailableLevers(incomingContext._arrayOfLevers) == 1)
+        {
+            Debug.Log("One lever left, RESET");
+            incomingContext.OnTransitionState(incomingContext._stateResetLevers);
+        }
+
+    }
 
     private bool ChoseBadLever(GameObject incomingObject, Russian_Balloon incomingContext)
     {
