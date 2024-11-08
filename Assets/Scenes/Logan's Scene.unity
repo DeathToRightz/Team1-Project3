@@ -1984,6 +1984,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 509830475}
+--- !u!4 &335593821 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 193385468}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &415407780
 Mesh:
   m_ObjectHideFlags: 0
@@ -4051,6 +4056,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 2070732621}
+--- !u!4 &939967739 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 746217576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &970153478
 GameObject:
   m_ObjectHideFlags: 0
@@ -4999,6 +5009,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 1826365413}
+--- !u!4 &1264636905 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 995328269}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1275206218
 Mesh:
   m_ObjectHideFlags: 0
@@ -5200,6 +5215,7 @@ MonoBehaviour:
   - {fileID: 1548070579}
   - {fileID: 1264636902}
   explosiveTagName: Bad Lever
+  safeTagName: Safe Lever
   chosenLever: {fileID: 0}
 --- !u!4 &1324837731
 Transform:
@@ -5999,6 +6015,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 2116074744}
+--- !u!4 &1548070582 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 1043441421}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1558629168
 GameObject:
   m_ObjectHideFlags: 0
@@ -7849,6 +7870,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _position: {fileID: 970153479}
+--- !u!4 &1935676213 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2897859969116943651, guid: b3477f9a61653454f888709946386e48, type: 3}
+  m_PrefabInstance: {fileID: 291149797}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1977173830
 Mesh:
   m_ObjectHideFlags: 0
@@ -8069,7 +8095,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f14176a5a56b7f741a966816c8034160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePoints:
+  leverSelectionPoints:
+  - {fileID: 939967739}
+  - {fileID: 335593821}
+  - {fileID: 1935676213}
+  - {fileID: 1548070582}
+  - {fileID: 1264636905}
+  stagePoints:
   - {fileID: 2070732621}
   - {fileID: 2116074744}
   - {fileID: 970153479}
@@ -8078,8 +8110,7 @@ MonoBehaviour:
   moveSpeed: 5
   movementArea: {fileID: 1932797915}
   shouldMoveToPoint: 0
-  animator: {fileID: 2060129761}
-  animationName: WalkAnim
+  isMoving: 0
 --- !u!114 &2060129763
 MonoBehaviour:
   m_ObjectHideFlags: 0

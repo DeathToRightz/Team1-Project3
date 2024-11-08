@@ -10,7 +10,7 @@ public class Lever : MonoBehaviour
     private PlayerInput _playerInput;
     private InputAction _chooseLever;
     private Russian_Balloon _balloonScript;
-    
+    [SerializeField] bool leverActive = true;
     private void Awake()
     {
        _playerInput = new PlayerInput();
@@ -32,13 +32,13 @@ public class Lever : MonoBehaviour
     private void OnLeverPressed(InputAction.CallbackContext context)
     {
         if(Mathf.Approximately(_playerMovementScript.gameObject.transform.position.z,_position.position.z)) {_balloonScript.chosenLever = this.gameObject; }
-        
+        TurnOffLever();
         
     }
 
 
     public void TurnOffLever()
     {
-        gameObject.SetActive(false);
+        leverActive = false;
     }
 }

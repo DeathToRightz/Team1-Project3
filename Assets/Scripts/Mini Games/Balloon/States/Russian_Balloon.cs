@@ -26,6 +26,9 @@ public class Russian_Balloon : MonoBehaviour
     //Variable of a Randomize Bad Lever State that is called here
     public BalloonStateRandomizeBadLever _stateRandomizeBadLever = new BalloonStateRandomizeBadLever();
 
+
+    public BalloonStateCheckingLever _stateCheckingLever = new BalloonStateCheckingLever();
+
     //Variable of a Randomize Good Lever State that is called here
     //public BallonStateRandomizeGoodLevers _stateRandomizeGoodLever = new BallonStateRandomizeGoodLevers(); // Jancy Added this
 
@@ -54,7 +57,7 @@ public class Russian_Balloon : MonoBehaviour
         _currentState = stateToTransitionTo;
 
         _currentState.OnStartState(this);
-
+        
         Debug.Log("Transitioned to: " + stateToTransitionTo.ToString());
     }
 

@@ -18,18 +18,8 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)
     {
          
-        if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.explosiveTagName) { Debug.Log("Kaboom"); }
-        if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.safeTagName) 
-        { 
-            Debug.Log("safe");
-            /*
-            GameObject player = incomingContext.gameObject;
-
-            if (leverGameManager != null && player != null)
-            {
-                //leverGameManager.MovePlayerToExit(player);
-            }
-            */
-        }
+        if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.explosiveTagName) { Debug.Log("Kaboom"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
+        if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.safeTagName) { Debug.Log("Safe"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
+        
     }
 }
