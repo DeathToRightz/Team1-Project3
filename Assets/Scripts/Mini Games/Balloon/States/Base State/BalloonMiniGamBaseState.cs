@@ -11,6 +11,8 @@ public abstract class BalloonMiniGamBaseState
 
 
     public abstract void OnTransitionState(Russian_Balloon incomingContext);
+
+    public virtual void OnLeverSelected(Russian_Balloon incomingContext) { }
  
 
 }

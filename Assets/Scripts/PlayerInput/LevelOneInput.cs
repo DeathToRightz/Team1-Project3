@@ -12,7 +12,7 @@ public class LevelOneInput : MonoBehaviour
     private int currentPointIndex = 0; // Current target point for movement
     private bool isMoving = false; // Is the player currently moving
     [SerializeField] public bool isInStageArea = false; // Is the player in the stage area
-    private bool isLeverSelected = false; // Has the player selected a lever
+    [SerializeField] public bool isLeverSelected = false; // Has the player selected a lever
 
     public bool IsMoving => isMoving;  // Property to check if the player is moving
     public bool IsInStageArea => isInStageArea;  // Property to check if the player is in the stage area
@@ -80,20 +80,6 @@ public class LevelOneInput : MonoBehaviour
         isMoving = false;
     }
 
-    // Simulate lever selection. Randomly determine win or loss
-    /*
-    public bool SelectLever()
-    {
-        // This is where the random logic for win/loss happens
-        // For example, 50% chance to win
-        bool win = Random.value > 0.5f;
-
-        // Mark that a lever has been selected
-        isLeverSelected = true;
-
-        return win;
-    }
-    */
 
     // Move player to an exit position after game interaction
     public IEnumerator MoveToExit(Transform exitPosition)

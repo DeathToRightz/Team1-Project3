@@ -23,4 +23,9 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
         //if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.safeTagName) { Debug.Log("Safe"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
 
     }
+
+    public override void OnLeverSelected(Russian_Balloon incomingContext)
+    {
+        incomingContext.OnTransitionState(incomingContext._stateCheckingLever);
+    }
 }

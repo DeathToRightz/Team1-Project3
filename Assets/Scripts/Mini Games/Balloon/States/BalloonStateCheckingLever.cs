@@ -2,14 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 {
-   
+    
     public override void OnStartState(Russian_Balloon incomingContext)
     {
-        Debug.Log("Current state is " + this);
-       
+        incomingContext.playerQueue.Peek();
+        incomingContext.StartCoroutine(MovePlayerOffStage(incomingContext.currentPlayerOnStage, incomingContext.exitPathPositions, incomingContext));
+
+
+
+        //levelOneInput.isInStageArea = false;
+        //levelOneInput.isLeverSelected = false;
+
         //incomingContext.chosenLever = null;
     }
 
@@ -38,12 +46,12 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 
     }
 
-    private bool ChoseBadLever(GameObject incomingObject, Russian_Balloon incomingContext)
+    public bool ChoseBadLever(GameObject incomingObject, Russian_Balloon incomingContext)
     {
-
-        if (incomingObject.tag == incomingContext.explosiveTagName) { Debug.Log("Player is out"); return true; }
+        if (incomingObject.tag == incomingContext.explosiveTagName) { Debug.Log("Player is out"); SceneManager.LoadScene(SceneManager.GetActiveScene().name); return true; }
         else return false;
     }
+
 
     private int CheckForAvailableLevers(GameObject[] incomingArray)
     {
@@ -57,5 +65,18 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
             }
         }
         return availableLevers;
+    }
+
+    private IEnumerator MovePlayerOffStage(GameObject player, Transform[] pathPositions, Russian_Balloon incomingContext)
+    {
+        foreach (var position in pathPositions)
+        {
+            yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, position));
+        }
+
+        if (incomingContext.exitPositions.Length > 0)
+        {
+            yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, incomingContext.exitPositions[0]));
+        }
     }
 }
