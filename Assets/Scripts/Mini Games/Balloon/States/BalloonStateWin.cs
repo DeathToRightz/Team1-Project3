@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class BalloonStateWin : BalloonMiniGamBaseState
 {
+
     public override void OnStartState(Russian_Balloon incomingContext)
     {
         Debug.Log("Current state is " + this);
         
-        Debug.Log(PlayerThatDied(incomingContext));
+      incomingContext.StartCoroutine(BalloonPop(incomingContext));
 
     }
 
     public override void OnTransitionState(Russian_Balloon incomingContext)
     {
-        throw new System.NotImplementedException();
+  
     }
 
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)
     {
-        throw new System.NotImplementedException();
+   
     }
 
+
+    IEnumerator BalloonPop(Russian_Balloon incomingContext)
+    {
+        incomingContext._balloonAnimator.SetTrigger("Inflate");
+        float balloonInflateLength = incomingContext._inflateClip.length;
+
+
+        yield return new WaitForSeconds(balloonInflateLength);
+
+        Debug.Log(PlayerThatDied(incomingContext));
+    }
 
     private string PlayerThatDied(Russian_Balloon incomingContext)
     {

@@ -91,7 +91,7 @@ public class Russian_Balloon : MonoBehaviour
     }
 
     [SerializeField] public int remainingPlayers;
-    private bool gameInProgress = true;
+   // private bool gameInProgress = true;
     [SerializeField] public Queue<GameObject> playerQueue = new Queue<GameObject>();
     private float smoothMoveSpeed = 5f;
     private float smoothMoveThreshold = 0.1f;
@@ -101,8 +101,13 @@ public class Russian_Balloon : MonoBehaviour
     [SerializeField] public List<GameObject> players;
     [SerializeField] public GameObject currentPlayerOnStage;
     [SerializeField] public GameObject nextPlayer;
-    private GameObject winningPlayer;
-    private bool hasWinnerDeclared = false;
+
+    [SerializeField] public Animator _balloonAnimator;
+
+    [SerializeField] public AnimationClip _inflateClip;
+    
+    //private GameObject winningPlayer;
+    //private bool hasWinnerDeclared = false;
 
     private void FixedUpdate()
     {
@@ -115,42 +120,7 @@ public class Russian_Balloon : MonoBehaviour
     }
 
 
-    public IEnumerator ProcessQueue()
-    {
-        Debug.Log("Processed Queue");
-        while (remainingPlayers != 1 && gameInProgress)
-        {
-            if (playerQueue.Count == 0) { Debug.Log("break"); yield break; }
-
-            //currentPlayerOnStage = playerQueue.Dequeue();
-
-            //nextPlayer = playerQueue.Peek();
- 
-            LevelOneInput levelOneInput = currentPlayerOnStage.GetComponent<LevelOneInput>();
-            Debug.Log(currentPlayerOnStage);
-            if (levelOneInput != null)
-            {
-                //UpdateExitPositions();
-                Debug.Log("Changing Posiitons");
-                yield return StartCoroutine(levelOneInput.MoveThroughStagePositions(stagePositions));
-
-                yield return StartCoroutine(levelOneInput.MoveToLeverPoint(levelOneInput.leverSelectionPoints[0]));
-
-                while (!levelOneInput.IsLeverSelected)
-                {
-                    yield return null; // Continue checking until lever is selected
-                }
-
-
-            }
-
-            Debug.Log("levelOneInput is null");
-
-            
-        }
-
-        yield return new WaitForSeconds(1f);
-    }
+    
 
 
     private void RandomizePlayerPositions()

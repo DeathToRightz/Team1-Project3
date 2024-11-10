@@ -30,6 +30,7 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
     public override void OnLeverSelected(Russian_Balloon incomingContext)
     {
         incomingContext.chosenLever = incomingContext.currentLever;  //ADDED THIS
+        incomingContext.chosenLever.GetComponent<Lever>().leverActive = false;
         incomingContext.OnTransitionState(incomingContext._stateCheckingLever);
     }
 
