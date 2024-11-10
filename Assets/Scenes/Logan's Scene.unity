@@ -1527,19 +1527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03a4b77f801a2440aa2f86b0d9dcee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stagePositions:
-  - {fileID: 1666520648}
-  - {fileID: 1521424359}
-  - {fileID: 135667250}
-  exitPositions:
-  - {fileID: 1102684628}
-  - {fileID: 1816834350}
-  - {fileID: 1693897655}
-  players:
-  - {fileID: 735764925}
-  - {fileID: 1677547988}
-  - {fileID: 1143646798}
-  _arrayOfLevers: []
 --- !u!114 &544176915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1552,6 +1539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 685f2fe29f50f3e438e8007a682db991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLever: {fileID: 0}
   _arrayOfLevers:
   - {fileID: 1582193018}
   - {fileID: 430056160}
@@ -1561,6 +1549,11 @@ MonoBehaviour:
   explosiveTagName: Bad Lever
   safeTagName: Safe Lever
   chosenLever: {fileID: 0}
+  stagePositions: []
+  exitPathPositions: []
+  exitPositions: []
+  players: []
+  currentPlayerOnStage: {fileID: 0}
 --- !u!4 &544176916
 Transform:
   m_ObjectHideFlags: 0
@@ -2810,6 +2803,7 @@ MonoBehaviour:
   - {fileID: 1462892686}
   moveSpeed: 5
   isInStageArea: 0
+  isLeverSelected: 0
 --- !u!114 &735764928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3254,7 +3248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &843290518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3587,7 +3581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &966633032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4150,6 +4144,7 @@ MonoBehaviour:
   - {fileID: 1462892686}
   moveSpeed: 5
   isInStageArea: 0
+  isLeverSelected: 0
 --- !u!114 &1143646801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5825,7 +5820,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565824953}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c7f602f017f17d44809e28b6ffd0e84, type: 3}
   m_Name: 
@@ -6319,7 +6314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1604437272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6564,6 +6559,7 @@ MonoBehaviour:
   - {fileID: 1462892686}
   moveSpeed: 5
   isInStageArea: 0
+  isLeverSelected: 0
 --- !u!114 &1677547991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6771,7 +6767,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1845581801
 MonoBehaviour:
   m_ObjectHideFlags: 0

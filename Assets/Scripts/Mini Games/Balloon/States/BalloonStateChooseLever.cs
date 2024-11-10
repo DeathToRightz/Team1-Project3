@@ -19,13 +19,13 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)
     {
         if (incomingContext.chosenLever) { incomingContext.chosenLever.GetComponent<Lever>().leverActive = false; incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
-        //if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.explosiveTagName) { Debug.Log("Kaboom"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
-        //if(incomingContext.chosenLever && incomingContext.chosenLever.tag == incomingContext.safeTagName) { Debug.Log("Safe"); incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
+        
 
     }
 
     public override void OnLeverSelected(Russian_Balloon incomingContext)
     {
+        incomingContext.chosenLever = incomingContext.currentLever;  //ADDED THIS
         incomingContext.OnTransitionState(incomingContext._stateCheckingLever);
     }
 }

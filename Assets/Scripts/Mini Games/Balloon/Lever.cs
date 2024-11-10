@@ -13,7 +13,7 @@ public class Lever : MonoBehaviour
     private InputAction _chooseLever;
     private Russian_Balloon _balloonScript;
     [SerializeField] public bool leverActive = true;
-    private bool _playerInRange = false;
+   // private bool _playerInRange = false;
     Russian_Balloon russian_Balloon;
 
     private void Awake()
@@ -36,8 +36,10 @@ public class Lever : MonoBehaviour
 
     private void OnLeverPressed(InputAction.CallbackContext context)
     {
+        Debug.Log("Push");
         if (leverActive)
         {
+            Debug.Log("Chose lever");
             russian_Balloon.SelectLever();
             //if (Mathf.Abs(_position.position.z - _activePlayer.gameObject.transform.position.z) <= .1) { _balloonScript.chosenLever = this.gameObject; _activePlayer.isLeverSelected = true; }
         }

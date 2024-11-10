@@ -30,6 +30,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
     {
         if (!ChoseBadLever(incomingContext.chosenLever, incomingContext))
         {
+            Debug.Log("Safe");
             incomingContext.OnTransitionState(incomingContext._stateChooseLever);
         }
         else
@@ -64,6 +65,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
                 availableLevers++;
             }
         }
+        Debug.Log(availableLevers);
         return availableLevers;
     }
 
