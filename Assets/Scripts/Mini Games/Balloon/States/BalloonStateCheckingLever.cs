@@ -36,7 +36,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
         else
         {
             Debug.Log("Kaboom");
-            incomingContext.OnTransitionState(incomingContext._stateResetLevers);
+            incomingContext.OnTransitionState(incomingContext._stateWin);
         }
 
         if (CheckForAvailableLevers(incomingContext._arrayOfLevers) == 1)
@@ -60,7 +60,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
         for(int i = 0; i <= incomingArray.Length-1; i++)
         {
 
-            if(incomingArray[i].GetComponent<Lever>().leverActive == true)
+            if(incomingArray[i].GetComponent<Lever>().leverActive == true) //Check line 193 of the Russian Ballon Script, there's a comment for you
             {
                 availableLevers++;
             }

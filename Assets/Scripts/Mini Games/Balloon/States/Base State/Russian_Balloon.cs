@@ -33,6 +33,8 @@ public class Russian_Balloon : MonoBehaviour
 
     public BalloonStateResetLevers _stateResetLevers = new BalloonStateResetLevers();
 
+    public BalloonStateWin _stateWin = new BalloonStateWin();
+
     public void SelectLever()
     {
         _currentState.OnLeverSelected(this);
@@ -188,7 +190,8 @@ public class Russian_Balloon : MonoBehaviour
             GameObject lastPlayer = players[players.Count - 1];
             Transform lastExitPosition = exitPositions[exitPositions.Length - 1];
 
-            for (int i = 0; i <= _arrayOfLevers.Length - 1; i++)
+            for (int i = 0; i <= _arrayOfLevers.Length - 1; i++)   //This is the thing causing the array of levers to be the
+                                                                   //player. What is the purpose of this?
             {
                 _arrayOfLevers[i] = players[0];
             }
