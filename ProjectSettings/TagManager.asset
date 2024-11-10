@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bad Lever
   - Safe Lever
+  - Player1
+  - Player2
   layers:
   - Default
   - TransparentFX

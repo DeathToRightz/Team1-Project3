@@ -6,7 +6,7 @@
             "id": "db6a3894-240c-4111-97cd-5e5266d4815e",
             "actions": [
                 {
-                    "name": "ChooseLever",
+                    "name": "OneChooseLever",
                     "type": "Button",
                     "id": "04e7b6ee-99e2-4f79-a0da-b1b545515f90",
                     "expectedControlType": "Button",
@@ -15,7 +15,34 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveLeft",
+                    "name": "TwoMoveRight",
+                    "type": "Button",
+                    "id": "07bc45b8-3ecb-4a75-9829-22a38d43307e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TwoMoveLeft",
+                    "type": "Button",
+                    "id": "1de8fb7d-c243-4232-8805-848ac81f2672",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TwoChooseLever",
+                    "type": "Button",
+                    "id": "d8d9c041-fd1c-4efa-af35-983cf79e3016",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OneMoveLeft",
                     "type": "Button",
                     "id": "e6246c9b-5127-419c-b83d-69e57cc3ae9e",
                     "expectedControlType": "Button",
@@ -24,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveRight",
+                    "name": "OneMoveRight",
                     "type": "Button",
                     "id": "6f399aa5-428f-423b-9433-7b2e5e887b11",
                     "expectedControlType": "Button",
@@ -41,7 +68,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChooseLever",
+                    "action": "OneChooseLever",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -52,7 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveLeft",
+                    "action": "OneMoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -63,7 +90,40 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MoveRight",
+                    "action": "OneMoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a8a58493-d99e-4208-ab71-d60272f68a6e",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TwoChooseLever",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4a88c2d-e9ec-43e7-8765-14b555bd0c3f",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TwoMoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0e12635-d6a3-4fe6-86c5-7718683ab5ff",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TwoMoveRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

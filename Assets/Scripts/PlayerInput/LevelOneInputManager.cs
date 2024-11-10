@@ -19,9 +19,18 @@ public class LevelOneInputManager : MonoBehaviour
         playerInput = new PlayerInput();
         levelOneAction = playerInput.LevelOne;
         levelOneInputScript = gameObject.GetComponent<LevelOneInput>();
-
-        levelOneAction.MoveLeft.performed += ctx => levelOneInputScript.MoveLeft();
-        levelOneAction.MoveRight.performed += ctx => levelOneInputScript.MoveRight();    
+        if (gameObject.tag == "Player1")
+        {
+            levelOneAction.OneMoveLeft.performed += ctx => levelOneInputScript.MoveLeft();
+            levelOneAction.OneMoveRight.performed += ctx => levelOneInputScript.MoveRight();
+        }
+        
+        if (gameObject.tag == "Player2")
+        {
+            levelOneAction.TwoMoveLeft.performed += ctx => levelOneInputScript.MoveLeft();
+            levelOneAction.TwoMoveRight.performed += ctx => levelOneInputScript.MoveRight();
+        }
+        
     }
 
     // Update is called once per frame

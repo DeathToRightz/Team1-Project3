@@ -11,7 +11,7 @@ public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
     //Afterwards will automatically change to the choose lever state
     public override void OnStartState(Russian_Balloon incomingContext)
     {
-        Debug.Log("Current state is: " + this);
+       Debug.Log("Current state is: " + this);
 
         // Ramdomly selects an index for the "bad" level
         int badLeverIndex = Random.Range(0, incomingContext._arrayOfLevers.Length); //Jancy added this

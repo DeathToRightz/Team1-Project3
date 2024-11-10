@@ -34,7 +34,7 @@ public class Russian_Balloon : MonoBehaviour
     public BalloonStateResetLevers _stateResetLevers = new BalloonStateResetLevers();
 
     public BalloonStateWin _stateWin = new BalloonStateWin();
-
+    LevelOneInput levelOneInput;
     public void SelectLever()
     {
         _currentState.OnLeverSelected(this);
@@ -48,12 +48,26 @@ public class Russian_Balloon : MonoBehaviour
         //Current state for game starts as the Randomize Good Lever State
         //_currentState = _stateRandomizeGoodLever; // Jancy Added this
 
+        RandomizePlayerPositions();
+
+        // Enqueue the first two players
+        for (int i = 0; i < Mathf.Min(2, players.Count); i++)
+        {
+            playerQueue.Enqueue(players[i]);
+        }
+
+        remainingPlayers = players.Count;
+
         //Current state for game starts as the Randomize Bad Lever State
         _currentState = _stateRandomizeBadLever;
 
         //With the current state being switched up top, we call the Start State function is initially made in the Base State
         //TO SEE WHAT THIS DOES move to the BalloonStateRandomizeBadLever script
         _currentState.OnStartState(this); // this refers to this script meaning where ever this is called we have info from here that may be needed else where
+
+        //currentPlayerOnStage = playerQueue.Dequeue();
+        //nextPlayer = playerQueue.Peek();
+        //StartCoroutine(ProcessQueue());
     }
 
 
@@ -76,50 +90,51 @@ public class Russian_Balloon : MonoBehaviour
         _currentState.OnUpdateCurrentState(this);
     }
 
-    private int remainingPlayers;
+    [SerializeField] public int remainingPlayers;
     private bool gameInProgress = true;
     [SerializeField] public Queue<GameObject> playerQueue = new Queue<GameObject>();
     private float smoothMoveSpeed = 5f;
     private float smoothMoveThreshold = 0.1f;
     [SerializeField] public Transform[] stagePositions;
     [SerializeField] public Transform[] exitPathPositions;
-    [SerializeField] public Transform[] exitPositions;
+    [SerializeField] public Transform[] linePositions;
     [SerializeField] public List<GameObject> players;
     [SerializeField] public GameObject currentPlayerOnStage;
+    [SerializeField] public GameObject nextPlayer;
+    private GameObject winningPlayer;
+    private bool hasWinnerDeclared = false;
 
-
-    void Start()
+    private void FixedUpdate()
     {
-        RandomizePlayerPositions();
-        remainingPlayers = players.Count;
+        
+    }
 
-        // Enqueue the first two players
-        for (int i = 0; i < Mathf.Min(2, players.Count); i++)
-        {
-            playerQueue.Enqueue(players[i]);
-        }
-
-        StartCoroutine(ProcessQueue());
+    private void Start()
+    {
+        
     }
 
 
     public IEnumerator ProcessQueue()
     {
-        while (remainingPlayers > 0 && gameInProgress)
+        Debug.Log("Processed Queue");
+        while (remainingPlayers != 1 && gameInProgress)
         {
-            if (playerQueue.Count == 0) yield break;
+            if (playerQueue.Count == 0) { Debug.Log("break"); yield break; }
 
-            currentPlayerOnStage = playerQueue.Dequeue();
+            //currentPlayerOnStage = playerQueue.Dequeue();
+
+            //nextPlayer = playerQueue.Peek();
+ 
             LevelOneInput levelOneInput = currentPlayerOnStage.GetComponent<LevelOneInput>();
-
+            Debug.Log(currentPlayerOnStage);
             if (levelOneInput != null)
             {
-                UpdateExitPositions();
-
+                //UpdateExitPositions();
+                Debug.Log("Changing Posiitons");
                 yield return StartCoroutine(levelOneInput.MoveThroughStagePositions(stagePositions));
 
                 yield return StartCoroutine(levelOneInput.MoveToLeverPoint(levelOneInput.leverSelectionPoints[0]));
-                levelOneInput.isInStageArea = true;
 
                 while (!levelOneInput.IsLeverSelected)
                 {
@@ -129,10 +144,12 @@ public class Russian_Balloon : MonoBehaviour
 
             }
 
-            yield return new WaitForSeconds(1f);
+            Debug.Log("levelOneInput is null");
+
+            
         }
 
-        gameInProgress = false;
+        yield return new WaitForSeconds(1f);
     }
 
 
@@ -140,9 +157,9 @@ public class Russian_Balloon : MonoBehaviour
     {
         Shuffle(players);
 
-        for (int i = 0; i < players.Count && i < exitPositions.Length; i++)
+        for (int i = 0; i < players.Count && i < linePositions.Length; i++)
         {
-            players[i].transform.position = exitPositions[i].position;
+            players[i].transform.position = linePositions[i].position;
             players[i].transform.LookAt(new Vector3(0, players[i].transform.position.y, 0));
         }
     }
@@ -157,8 +174,6 @@ public class Russian_Balloon : MonoBehaviour
             list[j] = temp;
         }
     }
-
-    
 
     public IEnumerator SmoothMovePlayer(GameObject player, Transform targetPosition)
     {
@@ -176,28 +191,51 @@ public class Russian_Balloon : MonoBehaviour
         player.transform.position = targetPosition.position;
     }
 
-    private void UpdateExitPositions()
+    public void UpdateExitPositions()
     {
-        for (int i = 1; i < players.Count && i < exitPositions.Length; i++)
+        for (int i = 1; i < players.Count && i < linePositions.Length; i++)
         {
             GameObject player = players[i];
-            Transform targetPosition = exitPositions[i - 1];
+            Transform targetPosition = linePositions[i - 1];
             StartCoroutine(SmoothMovePlayer(player, targetPosition));
         }
 
-        if (players.Count >= 1 && players.Count <= exitPositions.Length)
+        if (players.Count >= 1 && players.Count <= linePositions.Length)
         {
             GameObject lastPlayer = players[players.Count - 1];
-            Transform lastExitPosition = exitPositions[exitPositions.Length - 1];
+            Transform lastExitPosition = linePositions[linePositions.Length - 1];
 
             for (int i = 0; i <= _arrayOfLevers.Length - 1; i++)   //This is the thing causing the array of levers to be the
                                                                    //player. What is the purpose of this?
             {
-                _arrayOfLevers[i] = players[0];
+                //_arrayOfLevers[i] = players[0]; (This was Changed because it was giving an error)
             }
 
             StartCoroutine(SmoothMovePlayer(lastPlayer, lastExitPosition));
         }
+    }
+
+    public IEnumerator MovePlayerOntoStage(GameObject player)
+    {
+        // Define the target position on the stage (in this case, `stageStartPosition`)
+        Vector3 targetPosition = stagePositions[0].position;
+
+        // While the player hasn't yet reached the target position
+        while (Vector3.Distance(player.transform.position, targetPosition) > 0.1f)
+        {
+            // Move the player smoothly towards the target
+            player.transform.position = Vector3.MoveTowards(
+                player.transform.position,
+                targetPosition,
+                smoothMoveSpeed * Time.deltaTime
+            );
+
+            // Wait for the next frame before continuing the loop
+            yield return null;
+        }
+
+        // Set the player's position to the exact target position to complete the movement
+        player.transform.position = targetPosition;
     }
 }
 

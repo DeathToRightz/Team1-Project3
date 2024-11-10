@@ -7,16 +7,13 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 {
-    
+    LevelOneInput levelOneInput;
     public override void OnStartState(Russian_Balloon incomingContext)
     {
-        incomingContext.playerQueue.Peek();
-        incomingContext.StartCoroutine(MovePlayerOffStage(incomingContext.currentPlayerOnStage, incomingContext.exitPathPositions, incomingContext));
-
-
-
-        //levelOneInput.isInStageArea = false;
-        //levelOneInput.isLeverSelected = false;
+        incomingContext.StartCoroutine(MovePlayerOffStage(incomingContext.currentPlayerOnStage, incomingContext.exitPathPositions, incomingContext)); //Moves Player off the Stage
+        incomingContext.playerQueue.Enqueue(incomingContext.currentPlayerOnStage); // It will add the current player on stage to the end of the queue
+        incomingContext.nextPlayer = incomingContext.playerQueue.Peek(); // sets the next player and retunrs it at the beginning of the queue
+        //incomingContext.PlayerToStage();
 
         //incomingContext.chosenLever = null;
     }
@@ -30,11 +27,15 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
     {
         if (!ChoseBadLever(incomingContext.chosenLever, incomingContext))
         {
+            incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>().isInStageArea = false;
             Debug.Log("Safe");
+            //incomingContext.StartCoroutine(incomingContext.ProcessQueue());
             incomingContext.OnTransitionState(incomingContext._stateChooseLever);
+            
         }
         else
         {
+            
             Debug.Log("Kaboom");
             incomingContext.OnTransitionState(incomingContext._stateWin);
         }
@@ -49,7 +50,8 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 
     public bool ChoseBadLever(GameObject incomingObject, Russian_Balloon incomingContext)
     {
-        if (incomingObject.tag == incomingContext.explosiveTagName) { Debug.Log("Player is out"); SceneManager.LoadScene(SceneManager.GetActiveScene().name); return true; }
+
+        if (incomingObject.tag == incomingContext.explosiveTagName) { Debug.Log("Player is out"); incomingContext.remainingPlayers--; return true; }
         else return false;
     }
 
@@ -71,14 +73,15 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 
     private IEnumerator MovePlayerOffStage(GameObject player, Transform[] pathPositions, Russian_Balloon incomingContext)
     {
+        //levelOneInput.isInStageArea = false;
         foreach (var position in pathPositions)
         {
             yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, position));
         }
 
-        if (incomingContext.exitPositions.Length > 0)
+        if (incomingContext.linePositions.Length > 0)
         {
-            yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, incomingContext.exitPositions[0]));
+            yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, incomingContext.linePositions[0]));
         }
     }
 }

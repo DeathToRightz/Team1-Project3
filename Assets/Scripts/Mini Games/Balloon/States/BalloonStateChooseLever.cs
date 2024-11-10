@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class BalloonStateChooseLever : BalloonMiniGamBaseState
 {
-    LeverGameManager leverGameManager;
+    LevelOneInput levelOneInput;
     public override void OnStartState(Russian_Balloon incomingContext)
     {
         Debug.Log("Current state is: " + this);
-        if (incomingContext.chosenLever) { incomingContext.chosenLever = null; }
+        incomingContext.currentPlayerOnStage = incomingContext.playerQueue.Dequeue();
+        incomingContext.nextPlayer = incomingContext.playerQueue.Peek();
+        levelOneInput = incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>();
+        incomingContext.StartCoroutine(MovePlayer(incomingContext));
+        if (incomingContext.chosenLever) { incomingContext.chosenLever = null;}
     }
 
     public override void OnTransitionState(Russian_Balloon incomingContext)
@@ -27,5 +31,11 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
     {
         incomingContext.chosenLever = incomingContext.currentLever;  //ADDED THIS
         incomingContext.OnTransitionState(incomingContext._stateCheckingLever);
+    }
+
+    public IEnumerator MovePlayer(Russian_Balloon incomingContext)
+    {
+        yield return levelOneInput.StartCoroutine(levelOneInput.MoveThroughStagePositions(incomingContext.stagePositions));
+        yield return levelOneInput.StartCoroutine(levelOneInput.MoveToLeverPoint(levelOneInput.leverSelectionPoints[0]));
     }
 }

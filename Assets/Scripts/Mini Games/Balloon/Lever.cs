@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Lever : MonoBehaviour
 {
-    LeverGameManager leverGameManager;
+    
     [SerializeField] Transform _position;
-    [SerializeField] public LevelOneInput _activePlayer;
-    //private LevelOneInput _playerMovementScript;
+    //[SerializeField] public LevelOneInput _activePlayer;
+    private LevelOneInput _playerMovementScript;
     private PlayerInput _playerInput;
     private InputAction _chooseLever;
     private Russian_Balloon _balloonScript;
@@ -25,7 +25,7 @@ public class Lever : MonoBehaviour
     private void OnEnable()
     {
         _playerInput.Enable();
-        _chooseLever = _playerInput.LevelOne.ChooseLever;
+        _chooseLever = _playerInput.LevelOne.OneChooseLever;
         _chooseLever.performed += OnLeverPressed;
     }
 
@@ -48,7 +48,6 @@ public class Lever : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-            russian_Balloon.currentLever = gameObject;
-        
+       russian_Balloon.currentLever = gameObject;
     }
 }

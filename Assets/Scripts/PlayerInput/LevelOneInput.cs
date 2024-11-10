@@ -8,7 +8,7 @@ public class LevelOneInput : MonoBehaviour
 
     [SerializeField] public Transform[] leverSelectionPoints;  // Define lever selection points on the stage
     [SerializeField] private float moveSpeed = 5f;  // Define movement speed
-
+    
     private int currentPointIndex = 0; // Current target point for movement
     private bool isMoving = false; // Is the player currently moving
     [SerializeField] public bool isInStageArea = false; // Is the player in the stage area
@@ -20,6 +20,7 @@ public class LevelOneInput : MonoBehaviour
 
     void Start()
     {
+        
         // Optional: Initialize any game-related parameters
     }
 
@@ -69,6 +70,7 @@ public class LevelOneInput : MonoBehaviour
     // Move player to a lever point
     public IEnumerator MoveToLeverPoint(Transform targetPoint)
     {
+        isInStageArea = true;
         isMoving = true;
 
         while (Vector3.Distance(transform.position, targetPoint.position) > 0.1f)
@@ -84,6 +86,7 @@ public class LevelOneInput : MonoBehaviour
     // Move player to an exit position after game interaction
     public IEnumerator MoveToExit(Transform exitPosition)
     {
+        
         isMoving = true;
 
         while (Vector3.Distance(transform.position, exitPosition.position) > 0.1f)

@@ -28,7 +28,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             ""id"": ""db6a3894-240c-4111-97cd-5e5266d4815e"",
             ""actions"": [
                 {
-                    ""name"": ""ChooseLever"",
+                    ""name"": ""OneChooseLever"",
                     ""type"": ""Button"",
                     ""id"": ""04e7b6ee-99e2-4f79-a0da-b1b545515f90"",
                     ""expectedControlType"": ""Button"",
@@ -37,7 +37,34 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MoveLeft"",
+                    ""name"": ""TwoMoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""07bc45b8-3ecb-4a75-9829-22a38d43307e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TwoMoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""1de8fb7d-c243-4232-8805-848ac81f2672"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TwoChooseLever"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8d9c041-fd1c-4efa-af35-983cf79e3016"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OneMoveLeft"",
                     ""type"": ""Button"",
                     ""id"": ""e6246c9b-5127-419c-b83d-69e57cc3ae9e"",
                     ""expectedControlType"": ""Button"",
@@ -46,7 +73,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MoveRight"",
+                    ""name"": ""OneMoveRight"",
                     ""type"": ""Button"",
                     ""id"": ""6f399aa5-428f-423b-9433-7b2e5e887b11"",
                     ""expectedControlType"": ""Button"",
@@ -63,7 +90,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChooseLever"",
+                    ""action"": ""OneChooseLever"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -74,7 +101,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveLeft"",
+                    ""action"": ""OneMoveLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -85,7 +112,40 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MoveRight"",
+                    ""action"": ""OneMoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8a58493-d99e-4208-ab71-d60272f68a6e"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TwoChooseLever"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4a88c2d-e9ec-43e7-8765-14b555bd0c3f"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TwoMoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c0e12635-d6a3-4fe6-86c5-7718683ab5ff"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TwoMoveRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -667,9 +727,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
 }");
         // LevelOne
         m_LevelOne = asset.FindActionMap("LevelOne", throwIfNotFound: true);
-        m_LevelOne_ChooseLever = m_LevelOne.FindAction("ChooseLever", throwIfNotFound: true);
-        m_LevelOne_MoveLeft = m_LevelOne.FindAction("MoveLeft", throwIfNotFound: true);
-        m_LevelOne_MoveRight = m_LevelOne.FindAction("MoveRight", throwIfNotFound: true);
+        m_LevelOne_OneChooseLever = m_LevelOne.FindAction("OneChooseLever", throwIfNotFound: true);
+        m_LevelOne_TwoMoveRight = m_LevelOne.FindAction("TwoMoveRight", throwIfNotFound: true);
+        m_LevelOne_TwoMoveLeft = m_LevelOne.FindAction("TwoMoveLeft", throwIfNotFound: true);
+        m_LevelOne_TwoChooseLever = m_LevelOne.FindAction("TwoChooseLever", throwIfNotFound: true);
+        m_LevelOne_OneMoveLeft = m_LevelOne.FindAction("OneMoveLeft", throwIfNotFound: true);
+        m_LevelOne_OneMoveRight = m_LevelOne.FindAction("OneMoveRight", throwIfNotFound: true);
         // LevelTwo
         m_LevelTwo = asset.FindActionMap("LevelTwo", throwIfNotFound: true);
         m_LevelTwo_Move = m_LevelTwo.FindAction("Move", throwIfNotFound: true);
@@ -741,16 +804,22 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     // LevelOne
     private readonly InputActionMap m_LevelOne;
     private List<ILevelOneActions> m_LevelOneActionsCallbackInterfaces = new List<ILevelOneActions>();
-    private readonly InputAction m_LevelOne_ChooseLever;
-    private readonly InputAction m_LevelOne_MoveLeft;
-    private readonly InputAction m_LevelOne_MoveRight;
+    private readonly InputAction m_LevelOne_OneChooseLever;
+    private readonly InputAction m_LevelOne_TwoMoveRight;
+    private readonly InputAction m_LevelOne_TwoMoveLeft;
+    private readonly InputAction m_LevelOne_TwoChooseLever;
+    private readonly InputAction m_LevelOne_OneMoveLeft;
+    private readonly InputAction m_LevelOne_OneMoveRight;
     public struct LevelOneActions
     {
         private @PlayerInput m_Wrapper;
         public LevelOneActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @ChooseLever => m_Wrapper.m_LevelOne_ChooseLever;
-        public InputAction @MoveLeft => m_Wrapper.m_LevelOne_MoveLeft;
-        public InputAction @MoveRight => m_Wrapper.m_LevelOne_MoveRight;
+        public InputAction @OneChooseLever => m_Wrapper.m_LevelOne_OneChooseLever;
+        public InputAction @TwoMoveRight => m_Wrapper.m_LevelOne_TwoMoveRight;
+        public InputAction @TwoMoveLeft => m_Wrapper.m_LevelOne_TwoMoveLeft;
+        public InputAction @TwoChooseLever => m_Wrapper.m_LevelOne_TwoChooseLever;
+        public InputAction @OneMoveLeft => m_Wrapper.m_LevelOne_OneMoveLeft;
+        public InputAction @OneMoveRight => m_Wrapper.m_LevelOne_OneMoveRight;
         public InputActionMap Get() { return m_Wrapper.m_LevelOne; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -760,28 +829,46 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_LevelOneActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_LevelOneActionsCallbackInterfaces.Add(instance);
-            @ChooseLever.started += instance.OnChooseLever;
-            @ChooseLever.performed += instance.OnChooseLever;
-            @ChooseLever.canceled += instance.OnChooseLever;
-            @MoveLeft.started += instance.OnMoveLeft;
-            @MoveLeft.performed += instance.OnMoveLeft;
-            @MoveLeft.canceled += instance.OnMoveLeft;
-            @MoveRight.started += instance.OnMoveRight;
-            @MoveRight.performed += instance.OnMoveRight;
-            @MoveRight.canceled += instance.OnMoveRight;
+            @OneChooseLever.started += instance.OnOneChooseLever;
+            @OneChooseLever.performed += instance.OnOneChooseLever;
+            @OneChooseLever.canceled += instance.OnOneChooseLever;
+            @TwoMoveRight.started += instance.OnTwoMoveRight;
+            @TwoMoveRight.performed += instance.OnTwoMoveRight;
+            @TwoMoveRight.canceled += instance.OnTwoMoveRight;
+            @TwoMoveLeft.started += instance.OnTwoMoveLeft;
+            @TwoMoveLeft.performed += instance.OnTwoMoveLeft;
+            @TwoMoveLeft.canceled += instance.OnTwoMoveLeft;
+            @TwoChooseLever.started += instance.OnTwoChooseLever;
+            @TwoChooseLever.performed += instance.OnTwoChooseLever;
+            @TwoChooseLever.canceled += instance.OnTwoChooseLever;
+            @OneMoveLeft.started += instance.OnOneMoveLeft;
+            @OneMoveLeft.performed += instance.OnOneMoveLeft;
+            @OneMoveLeft.canceled += instance.OnOneMoveLeft;
+            @OneMoveRight.started += instance.OnOneMoveRight;
+            @OneMoveRight.performed += instance.OnOneMoveRight;
+            @OneMoveRight.canceled += instance.OnOneMoveRight;
         }
 
         private void UnregisterCallbacks(ILevelOneActions instance)
         {
-            @ChooseLever.started -= instance.OnChooseLever;
-            @ChooseLever.performed -= instance.OnChooseLever;
-            @ChooseLever.canceled -= instance.OnChooseLever;
-            @MoveLeft.started -= instance.OnMoveLeft;
-            @MoveLeft.performed -= instance.OnMoveLeft;
-            @MoveLeft.canceled -= instance.OnMoveLeft;
-            @MoveRight.started -= instance.OnMoveRight;
-            @MoveRight.performed -= instance.OnMoveRight;
-            @MoveRight.canceled -= instance.OnMoveRight;
+            @OneChooseLever.started -= instance.OnOneChooseLever;
+            @OneChooseLever.performed -= instance.OnOneChooseLever;
+            @OneChooseLever.canceled -= instance.OnOneChooseLever;
+            @TwoMoveRight.started -= instance.OnTwoMoveRight;
+            @TwoMoveRight.performed -= instance.OnTwoMoveRight;
+            @TwoMoveRight.canceled -= instance.OnTwoMoveRight;
+            @TwoMoveLeft.started -= instance.OnTwoMoveLeft;
+            @TwoMoveLeft.performed -= instance.OnTwoMoveLeft;
+            @TwoMoveLeft.canceled -= instance.OnTwoMoveLeft;
+            @TwoChooseLever.started -= instance.OnTwoChooseLever;
+            @TwoChooseLever.performed -= instance.OnTwoChooseLever;
+            @TwoChooseLever.canceled -= instance.OnTwoChooseLever;
+            @OneMoveLeft.started -= instance.OnOneMoveLeft;
+            @OneMoveLeft.performed -= instance.OnOneMoveLeft;
+            @OneMoveLeft.canceled -= instance.OnOneMoveLeft;
+            @OneMoveRight.started -= instance.OnOneMoveRight;
+            @OneMoveRight.performed -= instance.OnOneMoveRight;
+            @OneMoveRight.canceled -= instance.OnOneMoveRight;
         }
 
         public void RemoveCallbacks(ILevelOneActions instance)
@@ -970,9 +1057,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     }
     public interface ILevelOneActions
     {
-        void OnChooseLever(InputAction.CallbackContext context);
-        void OnMoveLeft(InputAction.CallbackContext context);
-        void OnMoveRight(InputAction.CallbackContext context);
+        void OnOneChooseLever(InputAction.CallbackContext context);
+        void OnTwoMoveRight(InputAction.CallbackContext context);
+        void OnTwoMoveLeft(InputAction.CallbackContext context);
+        void OnTwoChooseLever(InputAction.CallbackContext context);
+        void OnOneMoveLeft(InputAction.CallbackContext context);
+        void OnOneMoveRight(InputAction.CallbackContext context);
     }
     public interface ILevelTwoActions
     {
