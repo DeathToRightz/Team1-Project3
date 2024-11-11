@@ -11,7 +11,9 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
         incomingContext.currentPlayerOnStage = incomingContext.playerQueue.Dequeue();
         incomingContext.nextPlayer = incomingContext.playerQueue.Peek();
         levelOneInput = incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>();
+       
         incomingContext.StartCoroutine(MovePlayer(incomingContext));
+        
         if (incomingContext.chosenLever) { incomingContext.chosenLever = null;}
     }
 
@@ -22,16 +24,21 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
 
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)
     {
-        if (incomingContext.chosenLever) { incomingContext.chosenLever.GetComponent<Lever>().leverActive = false; incomingContext.OnTransitionState(incomingContext._stateCheckingLever); }
-        
-
+             
     }
 
     public override void OnLeverSelected(Russian_Balloon incomingContext)
     {
-        incomingContext.chosenLever = incomingContext.currentLever;  //ADDED THIS
-        incomingContext.chosenLever.GetComponent<Lever>().leverActive = false;
-        incomingContext.OnTransitionState(incomingContext._stateCheckingLever);
+        
+            incomingContext.chosenLever = incomingContext.currentLever;  //ADDED THIS
+        if(incomingContext.chosenLever.GetComponent<Lever>().leverActive)
+        {
+            incomingContext.chosenLever.GetComponent<Lever>().leverActive = false;
+            incomingContext.OnTransitionState(incomingContext._stateCheckingLever);
+
+        }
+
+
     }
 
     public IEnumerator MovePlayer(Russian_Balloon incomingContext)

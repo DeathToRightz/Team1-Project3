@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BalloonStateResetLevers : BalloonMiniGamBaseState
 {
@@ -10,8 +11,10 @@ public class BalloonStateResetLevers : BalloonMiniGamBaseState
         Debug.Log("Current state is " + this);
 
         ResetLevers(incomingContext);
-
         Debug.Log("Levers Reset");
+
+        //incomingContext.currentPlayerOnStage = incomingContext.playerQueue.Dequeue();
+      //  incomingContext.nextPlayer = incomingContext.playerQueue.Peek();
 
         incomingContext.OnTransitionState(incomingContext._stateChooseLever);
         
@@ -19,7 +22,7 @@ public class BalloonStateResetLevers : BalloonMiniGamBaseState
 
     public override void OnTransitionState(Russian_Balloon incomingContext)
     {
-        throw new System.NotImplementedException();
+       
     }
 
     public override void OnUpdateCurrentState(Russian_Balloon incomingContext)

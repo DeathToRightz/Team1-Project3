@@ -7,15 +7,14 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 {
-    LevelOneInput levelOneInput;
+   
     public override void OnStartState(Russian_Balloon incomingContext)
     {
         incomingContext.StartCoroutine(MovePlayerOffStage(incomingContext.currentPlayerOnStage, incomingContext.exitPathPositions, incomingContext)); //Moves Player off the Stage
+       
         incomingContext.playerQueue.Enqueue(incomingContext.currentPlayerOnStage); // It will add the current player on stage to the end of the queue
-        incomingContext.nextPlayer = incomingContext.playerQueue.Peek(); // sets the next player and retunrs it at the beginning of the queue
-        //incomingContext.PlayerToStage();
-
-        //incomingContext.chosenLever = null;
+       
+        incomingContext.nextPlayer = incomingContext.playerQueue.Peek(); // sets the next player and returns it at the beginning of the queue
     }
 
     public override void OnTransitionState(Russian_Balloon incomingContext)
@@ -28,23 +27,29 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
         if (!ChoseBadLever(incomingContext.chosenLever, incomingContext))
         {
             incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>().isInStageArea = false;
+
             Debug.Log("Safe");
-            //incomingContext.StartCoroutine(incomingContext.ProcessQueue());
+
             incomingContext.OnTransitionState(incomingContext._stateChooseLever);
-            
+
         }
         else
         {
-            
             Debug.Log("Kaboom");
+
             incomingContext.OnTransitionState(incomingContext._stateWin);
-        }
+            }           
+        
 
         if (CheckForAvailableLevers(incomingContext._arrayOfLevers) == 1)
         {
+
+            ResetLevers(incomingContext);
             Debug.Log("One lever left, RESET");
-            incomingContext.OnTransitionState(incomingContext._stateResetLevers);
+
+           
         }
+
 
     }
 
@@ -62,7 +67,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
         for(int i = 0; i <= incomingArray.Length-1; i++)
         {
 
-            if(incomingArray[i].GetComponent<Lever>().leverActive == true) //Check line 193 of the Russian Ballon Script, there's a comment for you
+            if(incomingArray[i].GetComponent<Lever>().leverActive == true)  //Check line 193 of the Russian Ballon Script, there's a comment for you
             {
                 availableLevers++;
             }
@@ -82,6 +87,50 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
         if (incomingContext.linePositions.Length > 0)
         {
             yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, incomingContext.linePositions[0]));
+        }
+    }
+
+    private void ResetLevers(Russian_Balloon incomingContext)
+    {
+        for (int i = 0; i < incomingContext._arrayOfLevers.Length; i++) // Jancy Added this
+        {
+            incomingContext._arrayOfLevers[i].tag = "Untagged";
+        }
+
+        switch (Random.Range(0, incomingContext._arrayOfLevers.Length - 1)) //Jancy added this
+        {
+            case 0:
+
+                incomingContext._arrayOfLevers[0].tag = incomingContext.explosiveTagName;
+                break;
+            case 1:
+
+                incomingContext._arrayOfLevers[1].tag = incomingContext.explosiveTagName;
+                break;
+            case 2:
+
+                incomingContext._arrayOfLevers[2].tag = incomingContext.explosiveTagName;
+                break;
+            case 3:
+
+                incomingContext._arrayOfLevers[3].tag = incomingContext.explosiveTagName;
+                break;
+            case 4:
+                incomingContext._arrayOfLevers[4].tag = incomingContext.explosiveTagName;
+                break;
+            default:
+                Debug.LogWarning("Setting up explosive lever went outside of limit");
+                break;
+        }
+
+        for (int i = 0; i < incomingContext._arrayOfLevers.Length; i++) // Jancy Added this
+        {
+            if (incomingContext._arrayOfLevers[i].tag != incomingContext.explosiveTagName)
+            {
+                incomingContext._arrayOfLevers[i].tag = incomingContext.safeTagName;
+            }
+
+            incomingContext._arrayOfLevers[i].GetComponent<Lever>().leverActive = true;
         }
     }
 }
