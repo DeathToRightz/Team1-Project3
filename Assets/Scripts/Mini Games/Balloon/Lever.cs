@@ -20,7 +20,7 @@ public class Lever : MonoBehaviour
     {
          russian_Balloon = FindAnyObjectByType<Russian_Balloon>();
         _playerInput = new PlayerInput();
-        _balloonScript = GameObject.FindFirstObjectByType<Russian_Balloon>();
+       // _balloonScript = GameObject.FindFirstObjectByType<Russian_Balloon>();
     }
     private void OnEnable()
     {
