@@ -43,6 +43,7 @@ public class BalloonStateChooseLever : BalloonMiniGamBaseState
 
     public IEnumerator MovePlayer(Russian_Balloon incomingContext)
     {
+        yield return new WaitForSeconds(3f);
         yield return levelOneInput.StartCoroutine(levelOneInput.MoveThroughStagePositions(incomingContext.stagePositions));
         yield return levelOneInput.StartCoroutine(levelOneInput.MoveToLeverPoint(levelOneInput.leverSelectionPoints[0]));
     }

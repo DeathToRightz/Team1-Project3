@@ -33,7 +33,7 @@ public class LevelOneInput : MonoBehaviour
     public IEnumerator MoveThroughStagePositions(Transform[] stagePositions)
     {
         isMoving = true;
-
+        
         for (int i = 0; i < stagePositions.Length; i++)
         {
             while (Vector3.Distance(transform.position, stagePositions[i].position) > 0.1f)
