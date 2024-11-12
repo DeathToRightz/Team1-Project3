@@ -16,6 +16,8 @@ public class Lever : MonoBehaviour
    // private bool _playerInRange = false;
     Russian_Balloon russian_Balloon;
 
+    private string _activePlayerTag = "";
+
     private void Awake()
     {
          russian_Balloon = FindAnyObjectByType<Russian_Balloon>();
@@ -25,13 +27,54 @@ public class Lever : MonoBehaviour
     private void OnEnable()
     {
         _playerInput.Enable();
-        _chooseLever = _playerInput.LevelOne.OneChooseLever;
-        _chooseLever.performed += OnLeverPressed;
+        ConfigurePlayerInput();
     }
 
     private void OnDisable()
     {
         _playerInput?.Disable();
+    }
+
+    private void ConfigurePlayerInput()
+    {
+        if (_activePlayerTag == "Player1")
+        {
+            _chooseLever = _playerInput.LevelOne.OneChooseLever;
+        }
+        else if (_activePlayerTag == "Player2")
+        {
+            _chooseLever = _playerInput.LevelOne.TwoChooseLever;
+        }
+
+        if (_chooseLever != null)
+        {
+            _chooseLever.performed += OnLeverPressed;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player1") || other.CompareTag("Player2"))
+        {
+            _activePlayerTag = other.tag;
+
+            ConfigurePlayerInput();
+            russian_Balloon.currentLever = gameObject;
+        }
+       
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(_activePlayerTag))
+        {
+            // Reset active player tag when the player exits the range
+            _activePlayerTag = "";
+            if (_chooseLever != null)
+            {
+                _chooseLever.performed -= OnLeverPressed;
+            }
+        }
     }
 
     private void OnLeverPressed(InputAction.CallbackContext context)
@@ -40,10 +83,5 @@ public class Lever : MonoBehaviour
 
         Debug.Log("Chose lever");
         russian_Balloon.SelectLever();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-       russian_Balloon.currentLever = gameObject;
     }
 }

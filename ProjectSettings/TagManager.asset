@@ -8,6 +8,9 @@ TagManager:
   - Safe Lever
   - Player1
   - Player2
+  - Stairs
+  - Ball1
+  - Ball2
   layers:
   - Default
   - TransparentFX

@@ -12,6 +12,7 @@ public class LevelOneInput : MonoBehaviour
     private bool isMoving = false; // Is the player currently moving
     [SerializeField] public bool isInStageArea = false; // Is the player in the stage area
     [SerializeField] public bool isLeverSelected = false; // Has the player selected a lever
+    private Rigidbody rb;
 
     public bool IsMoving => isMoving;  // Property to check if the player is moving
     public bool IsInStageArea => isInStageArea;  // Property to check if the player is in the stage area
@@ -19,8 +20,8 @@ public class LevelOneInput : MonoBehaviour
 
     void Start()
     {
-        
-        // Optional: Initialize any game-related parameters
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -95,6 +96,23 @@ public class LevelOneInput : MonoBehaviour
         }
 
         isMoving = false;
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Stairs")
+        {
+            rb.isKinematic = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Stairs")
+        {
+            rb.isKinematic = false;
+        }
     }
 
 }
