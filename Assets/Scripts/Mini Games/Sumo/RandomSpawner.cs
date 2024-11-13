@@ -11,7 +11,7 @@ public class RandomSpawner : MonoBehaviour
     [SerializeField] private float minDistance = 3.0f; 
     [SerializeField] private float spawnRadius = 5.0f; // Radius for the spawn area (should match platform radius)
 
-    private void Awake()
+    private void Start()
     {
         SpawnPlayers();
     }
@@ -23,6 +23,7 @@ public class RandomSpawner : MonoBehaviour
             Debug.LogError("Player references are not assigned in the RandomSpawn script.");
             return;
         }
+        Debug.Log("Starting Spawn Player");
 
         Vector3 positionOne = GetValidSpawnPosition();
         Vector3 positionTwo;
@@ -36,23 +37,27 @@ public class RandomSpawner : MonoBehaviour
         // Set players' positions
         playerOne.transform.position = positionOne;
         playerTwo.transform.position = positionTwo;
+
+        Debug.Log("Player's have been spawn");
     }
 
-    Vector3 GetValidSpawnPosition()
+    private Vector3 GetValidSpawnPosition()
     {
+        
         Vector3 positon;
         float distanceFromCenter;
 
         do
         {
-            positon = GetRandomPosition();
+            
+            positon = SetRandomPosition();
             distanceFromCenter = new Vector3(positon.x, 0, positon.z).magnitude;
         } while (distanceFromCenter > spawnRadius); // Ensure position is within the platform radius
 
         return positon;
     }
 
-    Vector3 GetRandomPosition()
+    private Vector3 SetRandomPosition()
     {
         float angle = Random.Range(0f, 2f * Mathf.PI);
         float distance = Random.Range(0f, spawnRadius);
