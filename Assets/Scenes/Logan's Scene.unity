@@ -1358,6 +1358,7 @@ MonoBehaviour:
   - {fileID: 8535158669353361790, guid: 4d04a9eefa4f297468cceec0f1bc14d6, type: 3}
   - {fileID: 2920923344511577799, guid: 7a29767baa298e24fbc9367a3712cb6c, type: 3}
   _shootPos: {fileID: 494528219}
+  _shootPower: 250
 --- !u!4 &737071361
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,7 +1367,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737071359}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.01065415, z: -0, w: 0.99994326}
+  m_LocalRotation: {x: -0, y: 0.00082886126, z: -0, w: 0.99999964}
   m_LocalPosition: {x: -14.31, y: 2.16, z: -3.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1376,7 +1377,7 @@ Transform:
   - {fileID: 1315708106}
   - {fileID: 494528219}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 1.221, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0.095, z: 0}
 --- !u!1 &843290517
 GameObject:
   m_ObjectHideFlags: 0
