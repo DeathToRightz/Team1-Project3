@@ -34,9 +34,9 @@ public class RandomSpawner : MonoBehaviour
 
         } while (Vector3.Distance(positionOne, positionTwo) < minDistance);
 
-        // Set players' positions
-        playerOne.transform.position = positionOne;
-        playerTwo.transform.position = positionTwo;
+        // Instantiate player a random position
+        Instantiate(playerOne, positionOne, Quaternion.identity);
+        Instantiate(playerTwo, positionTwo, Quaternion.identity);
 
         Debug.Log("Player's have been spawn");
     }
