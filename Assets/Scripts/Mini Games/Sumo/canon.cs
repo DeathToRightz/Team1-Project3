@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class canon : MonoBehaviour
 {
@@ -11,54 +13,115 @@ public class canon : MonoBehaviour
 
     [SerializeField] float _shootPower;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            Shoot(_projectiles.Length); 
+    //[SerializeField] GameObject[] _players;
+    public List<GameObject> _players;
+   
 
-        }
+    [SerializeField] float _fireRate = 5f;
+
+    [SerializeField] UnityEvent<bool>  displaySightLinesEvent = new UnityEvent<bool>();
+
+    [SerializeField] bool _showSightLines;
+
+    private void Awake()
+    {
+        LookForPlayers(_players);
+    }
+    private void Start()
+    {     
+        
+            StartCoroutine(SpawnProjectile(_projectiles));     
+    }
+    private void Update()
+    {
+        displaySightLinesEvent.Invoke(_showSightLines);
     }
 
-
-    private void Shoot(int incomingRandomNumber)
+    IEnumerator SpawnProjectile(GameObject[] incomingArray)
     {
         GameObject chosenFruit = null;
         
-        Rigidbody _rb = null;
-        
-        switch (Random.Range(0, _projectiles.Length))
+        while(true)
+        {
+            yield return new WaitForSeconds(_fireRate);
+            switch (Random.Range(0, incomingArray.Length))
+            {
+                case 0:
+                    Debug.Log("Apple");
+                    chosenFruit = Instantiate(incomingArray[0], _shootPos.position, Quaternion.identity);
+                    LookAtPlayers(_shootPos, _players);
+                    ShootProjectile(chosenFruit);
+                    break;
+                case 1:
+                    Debug.Log("Orange");
+                    chosenFruit = Instantiate(incomingArray[1], _shootPos.position, Quaternion.identity);
+                    LookAtPlayers(_shootPos, _players);
+                    ShootProjectile(chosenFruit);
+                    break;
+                case 2:
+                    Debug.Log("Blueberry");
+                    chosenFruit = Instantiate(incomingArray[2], _shootPos.position, Quaternion.identity);
+                    LookAtPlayers(_shootPos, _players);
+                    ShootProjectile(chosenFruit);
+                    break;
+                case 3:
+                    Debug.Log("Watermelon");
+                    chosenFruit = Instantiate(incomingArray[3], _shootPos.position, Quaternion.identity);
+                    LookAtPlayers(_shootPos, _players);
+                    ShootProjectile(chosenFruit);
+                    break;
+                default:
+                    Debug.Log("Person!");
+                    break;
+            }
+        }
+
+    }
+
+    private void ShootProjectile(GameObject incomingObject)
+    {
+        Rigidbody _rb = incomingObject.GetComponent<Rigidbody>();
+        _rb.AddForce(_shootPos.forward * _shootPower);
+    }
+
+    private void LookAtPlayers(Transform incomingTransform, List<GameObject> incomingTargets)
+    {
+        switch (Random.Range(0, incomingTargets.Count))
         {
             case 0:
-                Debug.Log("Apple");
-                chosenFruit = Instantiate(_projectiles[0], _shootPos.position,Quaternion.identity);
-                _rb = chosenFruit.GetComponent<Rigidbody>();
-                _rb.AddForce(_shootPos.forward * _shootPower);
-               
-                
+                incomingTransform.LookAt(incomingTargets[0].transform);
                 break;
-            case 1:
-                Debug.Log("Orange");
-                chosenFruit = Instantiate(_projectiles[1], _shootPos.position, Quaternion.identity);
-                _rb = chosenFruit.GetComponent<Rigidbody>();
-                _rb.AddForce(_shootPos.forward * _shootPower);
-                break;
-            case 2:
-                Debug.Log("Blueberry");
-                chosenFruit = Instantiate(_projectiles[2], _shootPos.position, Quaternion.identity);
-                _rb = chosenFruit.GetComponent<Rigidbody>();
-                _rb.AddForce(_shootPos.forward * _shootPower);
-                break;
-            case 3:
-                Debug.Log("Watermelon");
-                chosenFruit = Instantiate(_projectiles[3], _shootPos.position, Quaternion.identity);
-                _rb = chosenFruit.GetComponent<Rigidbody>();
-                _rb.AddForce(_shootPos.forward * _shootPower);
+            case 1:                         
+                incomingTransform.LookAt(incomingTargets[1].transform);
                 break;
             default:
-                Debug.Log("Person!");
+                Debug.LogError("Out of bounds");
                 break;
         }
+
+
     }
+
+    public void DisplaySightLines(bool incomingBool)
+    {
+        if (incomingBool)
+        {
+            Debug.DrawLine(_shootPos.position, _players[0].transform.position, Color.blue);
+            Debug.DrawLine(_shootPos.position, _players[1].transform.position, Color.red);
+        }
+        
+    }
+
+    public void LookForPlayers(List<GameObject> incomingArray)
+    {
+        RABInput[] list = FindObjectsOfType<RABInput>();
+
+        for (int i = 0; i <= list.Length-1; i++)
+        {
+            incomingArray.Add(list[i].gameObject);
+        }
+
+    }
+   
+
 }
