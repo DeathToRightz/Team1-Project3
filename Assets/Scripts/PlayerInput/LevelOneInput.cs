@@ -20,7 +20,6 @@ public class LevelOneInput : MonoBehaviour
 
     void Start()
     {
-
         rb = GetComponent<Rigidbody>();
     }
 

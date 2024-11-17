@@ -15,22 +15,25 @@ public class canon : MonoBehaviour
 
     //[SerializeField] GameObject[] _players;
     public List<GameObject> _players;
-   
+
+    [SerializeField] public Animator cannonAnim;
 
     [SerializeField] float _fireRate = 5f;
 
     [SerializeField] UnityEvent<bool>  displaySightLinesEvent = new UnityEvent<bool>();
 
     [SerializeField] bool _showSightLines;
+    DeathPit deathPit;
 
     private void Awake()
     {
-        LookForPlayers(_players);
+        //LookForPlayers(_players);
     }
     private void Start()
-    {     
-        
-            StartCoroutine(SpawnProjectile(_projectiles));     
+    {
+        deathPit = FindObjectOfType<DeathPit>();
+        LookForPlayers(_players);
+        StartCoroutine(SpawnProjectile(_projectiles));     
     }
     private void Update()
     {
@@ -39,33 +42,36 @@ public class canon : MonoBehaviour
 
     IEnumerator SpawnProjectile(GameObject[] incomingArray)
     {
+        //yield return new WaitForSeconds(10f);
+        cannonAnim.SetTrigger("StartCannons");
+        yield return new WaitForSeconds(1f);
         GameObject chosenFruit = null;
         
-        while(true)
+        while(true && deathPit.isGameOver == false)
         {
             yield return new WaitForSeconds(_fireRate);
             switch (Random.Range(0, incomingArray.Length))
             {
                 case 0:
-                    Debug.Log("Apple");
+                    //Debug.Log("Apple");
                     chosenFruit = Instantiate(incomingArray[0], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players);
                     ShootProjectile(chosenFruit);
                     break;
                 case 1:
-                    Debug.Log("Orange");
+                    //Debug.Log("Orange");
                     chosenFruit = Instantiate(incomingArray[1], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players);
                     ShootProjectile(chosenFruit);
                     break;
                 case 2:
-                    Debug.Log("Blueberry");
+                    //Debug.Log("Blueberry");
                     chosenFruit = Instantiate(incomingArray[2], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players);
                     ShootProjectile(chosenFruit);
                     break;
                 case 3:
-                    Debug.Log("Watermelon");
+                    //Debug.Log("Watermelon");
                     chosenFruit = Instantiate(incomingArray[3], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players);
                     ShootProjectile(chosenFruit);

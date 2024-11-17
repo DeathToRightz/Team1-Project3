@@ -11,7 +11,7 @@ public class RandomSpawner : MonoBehaviour
     [SerializeField] private float minDistance = 3.0f; 
     [SerializeField] private float spawnRadius = 5.0f; // Radius for the spawn area (should match platform radius)
 
-    private void Start()
+    private void Awake()
     {
         SpawnPlayers();
     }
@@ -23,7 +23,6 @@ public class RandomSpawner : MonoBehaviour
             Debug.LogError("Player references are not assigned in the RandomSpawn script.");
             return;
         }
-        Debug.Log("Starting Spawn Player");
 
         Vector3 positionOne = GetValidSpawnPosition();
         Vector3 positionTwo;
@@ -38,7 +37,7 @@ public class RandomSpawner : MonoBehaviour
         Instantiate(playerOne, positionOne, Quaternion.identity);
         Instantiate(playerTwo, positionTwo, Quaternion.identity);
 
-        Debug.Log("Player's have been spawn");
+        
     }
 
     private Vector3 GetValidSpawnPosition()

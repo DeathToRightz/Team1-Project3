@@ -8,18 +8,20 @@ public class BallInputManager : MonoBehaviour
     RABInput rollaBallInput;
     PlayerInput playerInput;
     public PlayerInput.LevelTwoActions levelTwoAction;
+    DeathPit deathPit;
 
     private void Awake()
     {
         playerInput = new PlayerInput();
         levelTwoAction = playerInput.LevelTwo;
         rollaBallInput = gameObject.GetComponent<RABInput>();
-        if(gameObject.tag == "Ball1")
+        deathPit = FindObjectOfType<DeathPit>();
+        if (gameObject.tag == "Ball1" && deathPit.isGameOver == false)
         {
             levelTwoAction.Player1Move.performed += ctx => rollaBallInput.Move(ctx.ReadValue<Vector2>());
             levelTwoAction.Player1Move.canceled += _ => rollaBallInput.StopMoving();
         }
-        else if (gameObject.tag == "Ball2")
+        else if (gameObject.tag == "Ball2" && deathPit.isGameOver == false)
         {
             levelTwoAction.Player2Move.performed += ctx => rollaBallInput.Move(ctx.ReadValue<Vector2>());
             levelTwoAction.Player2Move.canceled += _ => rollaBallInput.StopMoving();
