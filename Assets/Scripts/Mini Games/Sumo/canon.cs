@@ -42,7 +42,7 @@ public class canon : MonoBehaviour
 
     IEnumerator SpawnProjectile(GameObject[] incomingArray)
     {
-        //yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(20f);
         cannonAnim.SetTrigger("StartCannons");
         yield return new WaitForSeconds(1f);
         GameObject chosenFruit = null;

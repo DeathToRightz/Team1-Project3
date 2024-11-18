@@ -15,7 +15,7 @@ public class Falling_Platform : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _fallCounter = Random.Range(5, 15);
+        _fallCounter = Random.Range(10, 50);
         _startingPos = transform.position;
         
     }
