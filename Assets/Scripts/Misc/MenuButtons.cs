@@ -4,10 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuButtons : MonoBehaviour
 {
+    [SerializeField] GameObject secondSetOfButtons;
+    [SerializeField] GameObject firstSetOfButtons;
     public void OnClickStartButton()
     {
         Debug.Log("Start");
-        FadeScreen.instance.FadeOut(3, true, "Level_1_Scene");
+        ToggleButtons(secondSetOfButtons,true);
+        ToggleButtons(firstSetOfButtons,false);
+        
+
+       // FadeScreen.instance.FadeOut(3, true, "Level_1_Scene");
     }
 
     public void OnClickQuitButton()
@@ -17,13 +23,28 @@ public class MenuButtons : MonoBehaviour
 
     public void OnClickBackButton()
     {
-        FadeScreen.instance.FadeOut(3, true, "Main Menu");
+        Debug.Log("Back");
+        ToggleButtons(secondSetOfButtons, false);
+        ToggleButtons(firstSetOfButtons, true);
+        //FadeScreen.instance.FadeOut(3, true, "Main Menu");
     }
 
     public void OnClickCreditsButton()
     {
         Debug.Log("Credits");
-        FadeScreen.instance.FadeOut(3, true, "Credits");
+       // FadeScreen.instance.FadeOut(3, true, "Credits");
+    }
+
+    public void LevelOneLoad()
+    {
+        Debug.Log("Level 1 loading");
+        FadeScreen.instance.FadeOut(3, true, "Level_1_Scene");
+    }
+
+    public void LevelTwoLoad()
+    {
+        Debug.Log("Level 1 loading");
+      //  FadeScreen.instance.FadeOut(3, true, "Level_1_Scene");
     }
 
     IEnumerator DelayQuit(float delayFade)
@@ -31,5 +52,20 @@ public class MenuButtons : MonoBehaviour
         FadeScreen.instance.FadeOut(delayFade, false, null);
         yield return new WaitForSeconds(delayFade);     
         Application.Quit();
+    }
+
+    private void ToggleButtons(GameObject incomingObject, bool turnOn)
+    {
+        int childCount = incomingObject.transform.childCount;
+       
+        if(turnOn)
+        {
+            for (int i = 0; i <= childCount-1; i++) { incomingObject.transform.GetChild(i).gameObject.SetActive(true); }
+        }
+        else
+        {
+            for (int i = 0; i <= childCount-1; i++) { incomingObject.transform.GetChild(i).gameObject.SetActive(false); }
+        }
+      
     }
 }
