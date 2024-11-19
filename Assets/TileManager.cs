@@ -5,10 +5,12 @@ using UnityEngine;
 public class TileManager : MonoBehaviour
 {
     public List<GameObject> _tiles = new List<GameObject>();
-    [SerializeField] Transform _tilesParent;   
+    [SerializeField] Transform _tilesParent;
+    DeathPit deathPit;
     private void Awake()
     {
-       foreach(Transform child in _tilesParent)
+        deathPit = FindObjectOfType<DeathPit>();
+        foreach (Transform child in _tilesParent)
         {
             _tiles.Add(child.transform.gameObject);
         }
@@ -19,6 +21,14 @@ public class TileManager : MonoBehaviour
         
            StartCoroutine(AddFallScript(_tiles)); 
         
+    }
+
+    private void Update()
+    {
+        if (deathPit.isGameOver)
+        {
+            Destroy(this);
+        }
     }
 
 
