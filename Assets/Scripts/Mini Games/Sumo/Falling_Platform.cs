@@ -6,18 +6,22 @@ using UnityEngine;
 public class Falling_Platform : MonoBehaviour
 {
     private Rigidbody _rb;
+    private Collider _collider;
     [SerializeField] int _fallCounter;
     private float _speed = 20f;
     private float _amount = .1f;
     private Vector3 _startingPos;
     private Vector3 _newPos;
     private  bool shouldShake = false;
+    DeathPit deathPit;
+
     private void Awake()
     {
+        deathPit = FindObjectOfType<DeathPit>();
         _rb = GetComponent<Rigidbody>();
-        _fallCounter = Random.Range(10, 50);
+        _fallCounter = Random.Range(5, 10);
         _startingPos = transform.position;
-        
+        _collider = GetComponent<Collider>();
     }
     private void Start()
     {
@@ -29,16 +33,19 @@ public class Falling_Platform : MonoBehaviour
     }
     IEnumerator Drop(int incomingDelay)
     {
-       
-        yield return new WaitForSeconds(incomingDelay-2);
-        Debug.Log("Falling soon");
-        shouldShake = true;
-       
+        if (!deathPit.isGameOver)
+        {
+            yield return new WaitForSeconds(incomingDelay - 2);
+            Debug.Log("Falling soon");
+            shouldShake = true;
 
-        yield return new WaitForSeconds(2);
-        shouldShake = false;
-        _rb.isKinematic = false;
-        Destroy(gameObject, 5);
+
+            yield return new WaitForSeconds(2);
+            shouldShake = false;
+            _collider.enabled = false;
+            _rb.isKinematic = false;
+            Destroy(gameObject, 5);
+        }
     }
 
     private void Shake(bool incomingBool)

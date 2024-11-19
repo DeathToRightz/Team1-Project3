@@ -47,7 +47,7 @@ public class canon : MonoBehaviour
         yield return new WaitForSeconds(1f);
         GameObject chosenFruit = null;
         
-        while(true && deathPit.isGameOver == false)
+        while(true)
         {
             yield return new WaitForSeconds(_fireRate);
             switch (Random.Range(0, incomingArray.Length))
@@ -86,8 +86,11 @@ public class canon : MonoBehaviour
 
     private void ShootProjectile(GameObject incomingObject)
     {
-        Rigidbody _rb = incomingObject.GetComponent<Rigidbody>();
-        _rb.AddForce(_shootPos.forward * _shootPower);
+        if (!deathPit.isGameOver)
+        {
+            Rigidbody _rb = incomingObject.GetComponent<Rigidbody>();
+            _rb.AddForce(_shootPos.forward * _shootPower);
+        }
     }
 
     private void LookAtPlayers(Transform incomingTransform, List<GameObject> incomingTargets)

@@ -42,6 +42,8 @@ public class CameraZoom : MonoBehaviour
     {
         float initialFOV = virtualCamera.m_Lens.FieldOfView;
 
+        FadeScreen.instance.FadeOut(5f, true, "Main Menu");
+
         // Smoothly adjust the FOV
         while (Mathf.Abs(virtualCamera.m_Lens.FieldOfView - targetFOV) > 0.1f)
         {

@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class DeathPit : MonoBehaviour
 {
+    [SerializeField] private TMP_Text winText;
     [SerializeField] public bool isGameOver = false;
     [SerializeField] public Transform playerOne;
     [SerializeField] public Transform playerTwo;
@@ -23,15 +24,17 @@ public class DeathPit : MonoBehaviour
     {   
         if (other.CompareTag("Ball1"))
         {
+            winText.text = "Karen Wins";
             isGameOver = true;
             cameraZoom.SetWinningPlayer(playerTwo);
-            StartCoroutine(ResetLevel());
+            other.gameObject.SetActive(false);
         }
         if (other.CompareTag("Ball2"))
         {
+            winText.text = "Kevin Wins"; 
             isGameOver = true;
             cameraZoom.SetWinningPlayer(playerOne);
-            StartCoroutine(ResetLevel());
+            other.gameObject.SetActive(false);
         }
             
     }
@@ -39,25 +42,19 @@ public class DeathPit : MonoBehaviour
 
     private void AssingnPlayers()
     {
-        GameObject ball1 = GameObject.FindGameObjectWithTag("Ball1");
-        GameObject ball2 = GameObject.FindGameObjectWithTag("Ball2");
+        GameObject Karen = GameObject.FindGameObjectWithTag("Ball1");
+        GameObject Kevin = GameObject.FindGameObjectWithTag("Ball2");
 
 
-        if (ball1 != null && ball2 != null)
+        if (Karen != null && Kevin != null)
         {
-            playerOne = ball1.transform;
-            playerTwo = ball2.transform;
+            playerOne = Karen.transform;
+            playerTwo = Kevin.transform;
             Debug.Log($"Player One: {playerOne.name}, Player Two: {playerTwo.name}");
         }
         else
         {
             Debug.LogError("Unable to find both players with the tags 'Ball1' and 'Ball2'!");
         }
-    }
-
-    private IEnumerator ResetLevel()
-    {
-        yield return new WaitForSeconds(20f);
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
     }
 }
