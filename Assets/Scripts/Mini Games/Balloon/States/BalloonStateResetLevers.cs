@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class BalloonStateResetLevers : BalloonMiniGamBaseState
 {
-    public Lever lever;
-
+   
     public override void OnStartState(Russian_Balloon incomingContext)
     {
         Debug.Log("Current state is " + this);
-        lever.leveranim.SetBool("isPushed", false);
         ResetLevers(incomingContext);
         Debug.Log("Levers Reset");
+      
+       
 
         //incomingContext.currentPlayerOnStage = incomingContext.playerQueue.Dequeue();
-      //  incomingContext.nextPlayer = incomingContext.playerQueue.Peek();
+        //  incomingContext.nextPlayer = incomingContext.playerQueue.Peek();
 
         incomingContext.OnTransitionState(incomingContext._stateChooseLever);
         

@@ -5,7 +5,12 @@ using UnityEngine;
 
 public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 {
-   
+    //Lever lever;
+
+    private void Awake()
+    {
+        //lever = FindObjectOfAnyType<Lever>();
+    }
     public override void OnStartState(Russian_Balloon incomingContext)
     {
         incomingContext.StartCoroutine(MovePlayerOffStage(incomingContext.currentPlayerOnStage, incomingContext.exitPathPositions, incomingContext)); //Moves Player off the Stage
@@ -41,11 +46,9 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 
         if (CheckForAvailableLevers(incomingContext._arrayOfLevers) == 1)
         {
-
             ResetLevers(incomingContext);
             Debug.Log("One lever left, RESET");
-
-           
+            //lever.leveranim.SetBool("isPushed", false);
         }
 
 
@@ -76,6 +79,8 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 
     private IEnumerator MovePlayerOffStage(GameObject player, Transform[] pathPositions, Russian_Balloon incomingContext)
     {
+        yield return new WaitForSeconds(1.2f);
+
         //levelOneInput.isInStageArea = false;
         foreach (var position in pathPositions)
         {
@@ -127,6 +132,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
             {
                 incomingContext._arrayOfLevers[i].tag = incomingContext.safeTagName;
             }
+            incomingContext._arrayOfLevers[i].GetComponent<Lever>().leveranim.SetBool("isPushed", false);
 
             incomingContext._arrayOfLevers[i].GetComponent<Lever>().leverActive = true;
         }
