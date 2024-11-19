@@ -6,6 +6,7 @@ using UnityEngine;
 public class Falling_Platform : MonoBehaviour
 {
     private Rigidbody _rb;
+    private Collider _collider;
     [SerializeField] int _fallCounter;
     private float _speed = 20f;
     private float _amount = .1f;
@@ -15,9 +16,9 @@ public class Falling_Platform : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _fallCounter = Random.Range(10, 50);
+        _fallCounter = Random.Range(5, 10);
         _startingPos = transform.position;
-        
+        _collider = GetComponent<Collider>();
     }
     private void Start()
     {
@@ -36,7 +37,8 @@ public class Falling_Platform : MonoBehaviour
        
 
         yield return new WaitForSeconds(2);
-        shouldShake = false;
+        shouldShake= false;
+        _collider.enabled = false;
         _rb.isKinematic = false;
         Destroy(gameObject, 5);
     }
