@@ -6,6 +6,12 @@ public class MenuButtons : MonoBehaviour
 {
     [SerializeField] GameObject secondSetOfButtons;
     [SerializeField] GameObject firstSetOfButtons;
+
+    private void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
     public void OnClickStartButton()
     {
         Debug.Log("Start");
@@ -43,8 +49,8 @@ public class MenuButtons : MonoBehaviour
 
     public void LevelTwoLoad()
     {
-        Debug.Log("Level 1 loading");
-      //  FadeScreen.instance.FadeOut(3, true, "Level_1_Scene");
+        Debug.Log("Level 2 loading");
+        FadeScreen.instance.FadeOut(3, true, "Level_2_Scene");
     }
 
     IEnumerator DelayQuit(float delayFade)

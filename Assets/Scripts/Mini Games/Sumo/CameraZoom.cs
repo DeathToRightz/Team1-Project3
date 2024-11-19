@@ -19,6 +19,8 @@ public class CameraZoom : MonoBehaviour
     {
         virtualCamera.m_Lens.FieldOfView = 60f;
         deathPit = FindObjectOfType<DeathPit>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 

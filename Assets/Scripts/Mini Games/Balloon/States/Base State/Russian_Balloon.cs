@@ -70,7 +70,6 @@ public class Russian_Balloon : MonoBehaviour
         //StartCoroutine(ProcessQueue());
     }
 
-
     public void OnTransitionState(BalloonMiniGamBaseState stateToTransitionTo) ///When calling this funciton in other states it will ask for the specific state to change to
     {
         //Changes the current state to the chosen one in the parameter,
@@ -84,7 +83,11 @@ public class Russian_Balloon : MonoBehaviour
         
         //Debug.Log("Transitioned to: " + stateToTransitionTo.ToString());
     }
-
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Update()
     {
         _currentState.OnUpdateCurrentState(this);
@@ -108,20 +111,6 @@ public class Russian_Balloon : MonoBehaviour
     
     //private GameObject winningPlayer;
     //private bool hasWinnerDeclared = false;
-
-    private void FixedUpdate()
-    {
-        
-    }
-
-    private void Start()
-    {
-        
-    }
-
-
-    
-
 
     private void RandomizePlayerPositions()
     {
