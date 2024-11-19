@@ -31,7 +31,7 @@ public class DeathPit : MonoBehaviour
         }
         if (other.CompareTag("Ball2"))
         {
-            winText.text = "Kevin Wins"; 
+            winText.text = "John Wins"; 
             isGameOver = true;
             cameraZoom.SetWinningPlayer(playerOne);
             other.gameObject.SetActive(false);
@@ -43,13 +43,13 @@ public class DeathPit : MonoBehaviour
     private void AssingnPlayers()
     {
         GameObject Karen = GameObject.FindGameObjectWithTag("Ball1");
-        GameObject Kevin = GameObject.FindGameObjectWithTag("Ball2");
+        GameObject John = GameObject.FindGameObjectWithTag("Ball2");
 
 
-        if (Karen != null && Kevin != null)
+        if (Karen != null && John != null)
         {
             playerOne = Karen.transform;
-            playerTwo = Kevin.transform;
+            playerTwo = John.transform;
             Debug.Log($"Player One: {playerOne.name}, Player Two: {playerTwo.name}");
         }
         else
