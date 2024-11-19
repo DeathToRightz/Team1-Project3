@@ -13,7 +13,7 @@ public class canon : MonoBehaviour
 
     [SerializeField] float _shootPower;
 
-    //[SerializeField] GameObject[] _players;
+   // [SerializeField] GameObject[] _players;
     public List<GameObject> _players;
 
     [SerializeField] public Animator cannonAnim;
@@ -25,9 +25,11 @@ public class canon : MonoBehaviour
     [SerializeField] bool _showSightLines;
     DeathPit deathPit;
 
+    public bool shootAtPlayers;
+
     private void Awake()
     {
-        //LookForPlayers(_players);
+        LookForPlayers(_players);
     }
     private void Start()
     {
@@ -55,25 +57,25 @@ public class canon : MonoBehaviour
                 case 0:
                     //Debug.Log("Apple");
                     chosenFruit = Instantiate(incomingArray[0], _shootPos.position, Quaternion.identity);
-                    LookAtPlayers(_shootPos, _players);
+                    LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
                     break;
                 case 1:
                     //Debug.Log("Orange");
                     chosenFruit = Instantiate(incomingArray[1], _shootPos.position, Quaternion.identity);
-                    LookAtPlayers(_shootPos, _players);
+                    LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
                     break;
                 case 2:
                     //Debug.Log("Blueberry");
                     chosenFruit = Instantiate(incomingArray[2], _shootPos.position, Quaternion.identity);
-                    LookAtPlayers(_shootPos, _players);
+                    LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
                     break;
                 case 3:
                     //Debug.Log("Watermelon");
                     chosenFruit = Instantiate(incomingArray[3], _shootPos.position, Quaternion.identity);
-                    LookAtPlayers(_shootPos, _players);
+                    LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
                     break;
                 default:
@@ -86,27 +88,31 @@ public class canon : MonoBehaviour
 
     private void ShootProjectile(GameObject incomingObject)
     {
-        if (!deathPit.isGameOver)
+       if (!deathPit.isGameOver)
         {
             Rigidbody _rb = incomingObject.GetComponent<Rigidbody>();
             _rb.AddForce(_shootPos.forward * _shootPower);
         }
     }
 
-    private void LookAtPlayers(Transform incomingTransform, List<GameObject> incomingTargets)
+    private void LookAtPlayers(Transform incomingTransform, List<GameObject> incomingTargets, bool incomingBool)
     {
-        switch (Random.Range(0, incomingTargets.Count))
+        if (incomingBool)
         {
-            case 0:
-                incomingTransform.LookAt(incomingTargets[0].transform);
-                break;
-            case 1:                         
-                incomingTransform.LookAt(incomingTargets[1].transform);
-                break;
-            default:
-                Debug.LogError("Out of bounds");
-                break;
+            switch (Random.Range(0, incomingTargets.Count))
+            {
+                case 0:
+                    incomingTransform.LookAt(incomingTargets[0].transform);
+                    break;
+                case 1:
+                    incomingTransform.LookAt(incomingTargets[1].transform);
+                    break;
+                default:
+                    Debug.LogError("Out of bounds");
+                    break;
+            }
         }
+        
 
 
     }
