@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Lever : MonoBehaviour
 {
-    
+    [SerializeField] public Animator leveranim;
     [SerializeField] Transform _position;
     //[SerializeField] public LevelOneInput _activePlayer;
     private LevelOneInput _playerMovementScript;
@@ -15,7 +15,7 @@ public class Lever : MonoBehaviour
     [SerializeField] public bool leverActive = true;
    // private bool _playerInRange = false;
     Russian_Balloon russian_Balloon;
-
+    
     private string _activePlayerTag = "";
 
     private void Awake()
@@ -40,6 +40,7 @@ public class Lever : MonoBehaviour
         if (_activePlayerTag == "Player1")
         {
             _chooseLever = _playerInput.LevelOne.OneChooseLever;
+            
         }
         else if (_activePlayerTag == "Player2")
         {
@@ -80,7 +81,7 @@ public class Lever : MonoBehaviour
     private void OnLeverPressed(InputAction.CallbackContext context)
     {
         Debug.Log("Push");
-
+        leveranim.SetBool("isPushed", true);
         Debug.Log("Chose lever");
         russian_Balloon.SelectLever();
     }

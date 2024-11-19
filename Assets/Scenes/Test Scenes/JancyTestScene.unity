@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -862,7 +862,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 88243877}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19869442, y: -0.1171941, z: 0.0239385, w: 0.9727348}
+  m_LocalRotation: {x: 0.19869442, y: -0.11719412, z: 0.023938503, w: 0.9727348}
   m_LocalPosition: {x: 5.72, y: 15.58, z: -34.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1814,7 +1814,7 @@ GameObject:
   m_Layer: 0
   m_Name: StagePosition3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3925,6 +3925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63d1b32a469e794db66a2211eb7e832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  winText: {fileID: 0}
   isGameOver: 0
   playerOne: {fileID: 0}
   playerTwo: {fileID: 0}
@@ -10490,7 +10491,7 @@ GameObject:
   m_Layer: 0
   m_Name: StagePosition4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -27056,7 +27057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658507127}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19869442, y: -0.1171941, z: 0.0239385, w: 0.9727348}
+  m_LocalRotation: {x: 0.19869442, y: -0.11719412, z: 0.023938503, w: 0.9727348}
   m_LocalPosition: {x: 5.72, y: 15.58, z: -34.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -27865,7 +27866,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723522598
 Transform:
   m_ObjectHideFlags: 0
@@ -35394,6 +35395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2473b4433370c4b818fe586b4b2d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leveranim: {fileID: 0}
   _position: {fileID: 3617418625273618259}
   leverActive: 1
 --- !u!114 &790271142984650108
@@ -36203,7 +36205,7 @@ GameObject:
   m_Layer: 0
   m_Name: StagePosition1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -43801,7 +43803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!33 &4668789848843597760
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -44546,6 +44548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2473b4433370c4b818fe586b4b2d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leveranim: {fileID: 0}
   _position: {fileID: 7472268211891999684}
   leverActive: 1
 --- !u!33 &5481870619705536554
@@ -44877,6 +44880,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2473b4433370c4b818fe586b4b2d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leveranim: {fileID: 0}
   _position: {fileID: 7778592081776657218}
   leverActive: 1
 --- !u!114 &6176120294017751354
@@ -44976,6 +44980,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2473b4433370c4b818fe586b4b2d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leveranim: {fileID: 0}
   _position: {fileID: 2812690340599797472}
   leverActive: 1
 --- !u!33 &6295926205503371210
@@ -44998,6 +45003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2473b4433370c4b818fe586b4b2d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leveranim: {fileID: 0}
   _position: {fileID: 1537172114474487908}
   leverActive: 1
 --- !u!4 &6470242832338671130
@@ -45866,7 +45872,7 @@ GameObject:
   m_Layer: 0
   m_Name: StagePosition2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -45915,7 +45921,7 @@ GameObject:
   m_Layer: 0
   m_Name: StagePosition5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2897859969116943651}
   - component: {fileID: 4982963808717274773}
+  - component: {fileID: 8712330293096538306}
   m_Layer: 3
   m_Name: LeverPress(PlaceHolder)
   m_TagString: Untagged
@@ -56,6 +57,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.495911, y: 3.966788, z: 6.49465}
   m_Center: {x: -5.225935, y: 1.845394, z: 4.1300807}
+--- !u!95 &8712330293096538306
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3960999393031382690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 273a75370253b1f479e862544d645b70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4107765901580204861
 GameObject:
   m_ObjectHideFlags: 0
