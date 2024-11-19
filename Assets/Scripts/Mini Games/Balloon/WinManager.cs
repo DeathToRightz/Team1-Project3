@@ -7,7 +7,7 @@ public class WinManager : MonoBehaviour
     
     void Start()
     {
-        FadeScreen.instance.FadeOut(5, true, "Main Menu");
+        FadeScreen.instance.FadeOut(13, true, "Main Menu");
     }
 
     

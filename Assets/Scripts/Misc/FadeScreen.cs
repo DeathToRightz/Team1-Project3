@@ -63,7 +63,7 @@ public class FadeScreen : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         
-        if(changeScene ) { yield return new WaitForSeconds(fadeDelay); SceneManager.LoadScene(sceneToChangeTo); }
+        if(changeScene ) { yield return new WaitForSeconds(3); SceneManager.LoadScene(sceneToChangeTo); }
       
     }
 
