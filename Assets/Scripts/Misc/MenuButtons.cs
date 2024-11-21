@@ -44,7 +44,7 @@ public class MenuButtons : MonoBehaviour
     public void LevelOneLoad()
     {
         Debug.Log("Level 1 loading");
-        FadeScreen.instance.FadeOut(3, true, "Level_1_Scene");
+        FadeScreen.instance.FadeOut(3, true, "Level_1_Help");
     }
 
     public void LevelTwoLoad()

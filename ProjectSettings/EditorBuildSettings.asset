@@ -12,15 +12,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Credits.unity
     guid: 7ca8e022f8d63124d859c8132930d070
   - enabled: 1
+    path: Assets/Scenes/Main Game Scenes/Help Screens/Level_1_Help.unity
+    guid: ba125c6237a494044bf453c7dba49e00
+  - enabled: 1
     path: Assets/Scenes/Main Game Scenes/Levels/Level_1/Level_1_Scene.unity
     guid: e003606bab721e744b16fcfc93ce3c99
   - enabled: 1
     path: Assets/Scenes/Main Game Scenes/Levels/Level_2/Level_2_Scene.unity
     guid: 6692915cc321a4c4ebc3aa44e81cc535
   - enabled: 1
-    path: Assets/Scenes/Main Game Scenes/Levels/Level_1/PlayerTwo Win.unity
+    path: Assets/Scenes/Main Game Scenes/Levels/Level_1/Level_1_PlayerTwo Win.unity
     guid: ed968924059f7b544a5ccb351d5e86c7
   - enabled: 1
-    path: Assets/Scenes/Main Game Scenes/Levels/Level_1/PlayerOne Win.unity
+    path: Assets/Scenes/Main Game Scenes/Levels/Level_1/Level_1_PlayerOne Win.unity
     guid: 9031444fda265c045b905f1a9c9cfc61
   m_configObjects: {}
