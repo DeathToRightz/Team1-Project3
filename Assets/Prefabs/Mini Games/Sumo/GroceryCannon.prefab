@@ -1822,9 +1822,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5318069665294785277}
-  - component: {fileID: 5332414286303235367}
+  - component: {fileID: -6039207071283087191}
   m_Layer: 0
-  m_Name: Cannon
+  m_Name: GroceryCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1849,7 +1849,7 @@ Transform:
   - {fileID: 8438877241420183273}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5332414286303235367
+--- !u!114 &-6039207071283087191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1858,24 +1858,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2736358166028216708}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9935b8ec3fc97a04ebb82e04702e142e, type: 3}
+  m_Script: {fileID: 11500000, guid: 497c5d3209ad020469df89026aca1bc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectiles:
-  - {fileID: 6557455079656511168, guid: 0840515a7775a664c98faf41e739f675, type: 3}
-  - {fileID: 8535158669353361790, guid: 4d04a9eefa4f297468cceec0f1bc14d6, type: 3}
-  - {fileID: 2920923344511577799, guid: e4ba9be0e740d084abc88221ac99fc6c, type: 3}
-  - {fileID: 2920923344511577799, guid: 7a29767baa298e24fbc9367a3712cb6c, type: 3}
-  _shootPos: {fileID: 8438877241420183273}
-  _shootPower: 0
-  _players: []
-  cannonAnim: {fileID: 0}
-  _fireRate: 5
-  displaySightLinesEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _showSightLines: 0
-  shootAtPlayers: 0
+  target: {fileID: 0}
 --- !u!1 &3936518306661880253
 GameObject:
   m_ObjectHideFlags: 0
