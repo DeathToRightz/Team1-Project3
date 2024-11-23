@@ -18,15 +18,18 @@ public class PointZone : MonoBehaviour
         {
             groceryManager.AwardPoints("Player1", 10); // Award points to Player 1
             Destroy(other.gameObject); // Destroy the block
+            groceryManager.BlockDestroyed();
         }
         else if (other.CompareTag("Player2Block"))
         {
             groceryManager.AwardPoints("Player2", 10); // Award points to Player 2
             Destroy(other.gameObject); // Destroy the block
+            groceryManager.BlockDestroyed();
         }
         else
         {
             Destroy(other.gameObject);
+            groceryManager.BlockDestroyed();
         }
     }
 }
