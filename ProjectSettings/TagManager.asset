@@ -11,6 +11,11 @@ TagManager:
   - Stairs
   - Ball1
   - Ball2
+  - RedBall
+  - BlueBall
+  - Player1Block
+  - Player2Block
+  - Block
   layers:
   - Default
   - TransparentFX
