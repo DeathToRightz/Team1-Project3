@@ -4,6 +4,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Playables;
 
 public class canon : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class canon : MonoBehaviour
     public List<GameObject> _players;
 
     [SerializeField] public Animator cannonAnim;
+
+    [SerializeField] public PlayableDirector cannonDirector;
 
     [SerializeField] float _fireRate = 5f;
 
@@ -44,7 +47,7 @@ public class canon : MonoBehaviour
 
     IEnumerator SpawnProjectile(GameObject[] incomingArray)
     {
-        yield return new WaitForSeconds(20f);
+        //yield return new WaitForSeconds(20f);
         cannonAnim.SetTrigger("StartCannons");
         yield return new WaitForSeconds(1f);
         GameObject chosenFruit = null;
@@ -56,24 +59,32 @@ public class canon : MonoBehaviour
             {
                 case 0:
                     //Debug.Log("Apple");
+                    cannonDirector.Play();
+                    yield return new WaitForSeconds(1.2f);
                     chosenFruit = Instantiate(incomingArray[0], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
                     break;
                 case 1:
                     //Debug.Log("Orange");
+                    cannonDirector.Play();
+                    yield return new WaitForSeconds(1.2f);
                     chosenFruit = Instantiate(incomingArray[1], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
                     break;
                 case 2:
                     //Debug.Log("Blueberry");
+                    cannonDirector.Play();
+                    yield return new WaitForSeconds(1.2f);
                     chosenFruit = Instantiate(incomingArray[2], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
                     break;
                 case 3:
                     //Debug.Log("Watermelon");
+                    cannonDirector.Play();
+                    yield return new WaitForSeconds(1.2f);
                     chosenFruit = Instantiate(incomingArray[3], _shootPos.position, Quaternion.identity);
                     LookAtPlayers(_shootPos, _players, shootAtPlayers);
                     ShootProjectile(chosenFruit);
@@ -90,6 +101,7 @@ public class canon : MonoBehaviour
     {
        if (!deathPit.isGameOver)
         {
+            
             Rigidbody _rb = incomingObject.GetComponent<Rigidbody>();
             _rb.AddForce(_shootPos.forward * _shootPower);
         }
