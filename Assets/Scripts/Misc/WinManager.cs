@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class WinManager : MonoBehaviour
 {
-    [SerializeField] float _delay = 13f;
+    [SerializeField] float _delay = 0f;
     void Start()
     {
-        FadeScreen.instance.FadeOut(13, true, "Main Menu");
+        Debug.Log("Changing");
+        FadeScreen.instance.FadeOut(_delay, true, "Main Menu");
     }
 
     

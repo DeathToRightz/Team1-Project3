@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class CameraZoom : MonoBehaviour
@@ -42,7 +43,17 @@ public class CameraZoom : MonoBehaviour
     {
         float initialFOV = virtualCamera.m_Lens.FieldOfView;
 
-        FadeScreen.instance.FadeOut(5f, true, "Main Menu");
+        if (winningPlayer.CompareTag("Ball1"))
+        {
+         
+            StartCoroutine(LoadNextScene("Level_2_PlayerOne Win",4));
+
+        }
+        if (winningPlayer.CompareTag("Ball2"))
+        {
+            
+            StartCoroutine(LoadNextScene("Level_2_PlayerTwo Win", 4));
+        }
 
         // Smoothly adjust the FOV
         while (Mathf.Abs(virtualCamera.m_Lens.FieldOfView - targetFOV) > 0.1f)
@@ -54,5 +65,9 @@ public class CameraZoom : MonoBehaviour
         virtualCamera.m_Lens.FieldOfView = targetFOV;
     }
 
-    
+    IEnumerator LoadNextScene(string incomingSceneName, float incomingDelay)
+    {
+        yield return new WaitForSeconds(incomingDelay);
+        SceneManager.LoadScene(incomingSceneName);
+    }
 }

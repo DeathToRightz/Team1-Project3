@@ -7,6 +7,7 @@ public class FadeScreen : MonoBehaviour
     private CanvasGroup _canvasGroup;
     static FadeScreen _instance;
     private float alphaValueHolder;
+    private bool _alphaChanging = false;
     public static FadeScreen instance { get { return _instance; } }
 
     private void Awake()
@@ -35,18 +36,20 @@ public class FadeScreen : MonoBehaviour
 
     private void FadeInBlackScreen(Scene current, Scene next)
     {
-        FadeIn(3);
+        FadeIn(1);
     }
 
 
     public void FadeIn(float fadeDelay)
     {
-        StartCoroutine(SetAlpha(0, fadeDelay));
+        if (!_alphaChanging){ StartCoroutine(SetAlpha(0, fadeDelay)); }
+        
     }
 
     public void FadeOut(float fadeDelay, bool changeScene,string sceneToChangeTo)
     {
-        StartCoroutine(SetAlpha(1, fadeDelay,changeScene,sceneToChangeTo));
+
+        if (!_alphaChanging){ StartCoroutine(SetAlpha(1, fadeDelay, changeScene, sceneToChangeTo)); } 
     }
 
     IEnumerator SetAlpha(float desiredAlpha, float fadeDelay, bool changeScene = false, string sceneToChangeTo = null)
@@ -58,11 +61,12 @@ public class FadeScreen : MonoBehaviour
 
         while (Mathf.Abs(desiredAlpha - alphaValueHolder) > .0001f)
         {
+            _alphaChanging = true;
             alphaValueHolder = Mathf.MoveTowards(alphaValueHolder, desiredAlpha,Time.deltaTime/fadeDelay);
             _canvasGroup.alpha = alphaValueHolder;
             yield return new WaitForEndOfFrame();
         }
-        
+        _alphaChanging = false;
         if(changeScene ) { yield return new WaitForSeconds(3); SceneManager.LoadScene(sceneToChangeTo); }
       
     }
