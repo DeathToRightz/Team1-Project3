@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2928889124629014586
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.677988
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.545
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1221714992753599405, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999519054773664023, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_Name
+      value: GroceryCannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1999519054773664023, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8617624845607750728, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1999519054773664023, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1164957128869228261}
+    - targetCorrespondingSourceObject: {fileID: 1999519054773664023, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8622611455770898799}
+  m_SourcePrefab: {fileID: 100100000, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+--- !u!320 &789772753890961876 stripped
+PlayableDirector:
+  m_CorrespondingSourceObject: {fileID: 2472571881743942126, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+  m_PrefabInstance: {fileID: 2928889124629014586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3682315949109465389 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1999519054773664023, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+  m_PrefabInstance: {fileID: 2928889124629014586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1164957128869228261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682315949109465389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93fe4a4b6907246448df97e5dc44b841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8622611455770898799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682315949109465389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497c5d3209ad020469df89026aca1bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canShoot: 0
+  powa: 100
+  target: {fileID: 0}
+  _smokeParticle: {fileID: 5136021932671817099}
+  _projectile: {fileID: 2094580765744208051, guid: 7ccf84a5f9a967a4c8e97df076eb96c2, type: 3}
+  _direction: {x: 0, y: 0, z: 0}
+  _shootPoint: {fileID: 7798401275207187665}
+  groceryCannondirector: {fileID: 789772753890961876}
+--- !u!198 &5136021932671817099 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8062377473138015665, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+  m_PrefabInstance: {fileID: 2928889124629014586}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7798401275207187665 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4944105219100841195, guid: a4275445a91453b489732c2e41b8dcd7, type: 3}
+  m_PrefabInstance: {fileID: 2928889124629014586}
+  m_PrefabAsset: {fileID: 0}

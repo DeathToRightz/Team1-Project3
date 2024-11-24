@@ -46,6 +46,15 @@ public class GroceryManager : MonoBehaviour
         {
             // You can add logic here for when all blocks are destroyed
             Debug.Log("All blocks destroyed! Game over!");
+
+            if (PlayerOneScore > PlayerTwoScore)
+            {
+                Debug.Log("Player One Has Won");
+            }
+            else
+            {
+                Debug.Log("Player two Has Won");
+            }
         }
     }
 }

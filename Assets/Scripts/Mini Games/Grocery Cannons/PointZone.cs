@@ -29,7 +29,6 @@ public class PointZone : MonoBehaviour
         else
         {
             Destroy(other.gameObject);
-            groceryManager.BlockDestroyed();
         }
     }
 }
