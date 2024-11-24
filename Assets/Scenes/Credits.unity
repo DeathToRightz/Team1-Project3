@@ -480,6 +480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43482375e254dd4885924aa44855711, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  secondSetOfButtons: {fileID: 0}
+  firstSetOfButtons: {fileID: 0}
 --- !u!4 &732935546
 Transform:
   m_ObjectHideFlags: 0
@@ -948,7 +950,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Logan: Programmer, moral support\n\nJancey: Programmer, team mascot\n\nKay:
+  m_text: "Logan: Programmer, moral support\n\nJancy: Programmer, team mascot\n\nKay:
     Modeler, Animator  \n\nThomas: Modeler, VFX, SFX"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
