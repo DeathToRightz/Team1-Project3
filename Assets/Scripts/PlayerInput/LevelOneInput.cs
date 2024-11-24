@@ -32,6 +32,7 @@ public class LevelOneInput : MonoBehaviour
     // Move the player to a specific position (lever or stage position)
     public IEnumerator MoveThroughStagePositions(Transform[] stagePositions)
     {
+        currentPointIndex = 0;
         isMoving = true;
         
         for (int i = 0; i < stagePositions.Length; i++)
@@ -85,7 +86,7 @@ public class LevelOneInput : MonoBehaviour
     // Move player to an exit position after game interaction
     public IEnumerator MoveToExit(Transform exitPosition)
     {
-        currentPointIndex = 0;
+        
         isMoving = true;
 
         while (Vector3.Distance(transform.position, exitPosition.position) > 0.1f)
