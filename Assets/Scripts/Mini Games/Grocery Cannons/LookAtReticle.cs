@@ -14,15 +14,20 @@ public class LookAtReticle : MonoBehaviour
     [SerializeField] private Vector3 _direction;
     [SerializeField] Transform _shootPoint;
     [SerializeField] public PlayableDirector groceryCannondirector;
-
+    private Vector3 _newDirection;
+   
     void Update()
     {
-        transform.LookAt(target);
+      _newDirection = (transform.position - target.position);        
+      transform.LookAt(_newDirection);
+        //transform.LookAt(transform.position - target.position);
+       
     }
 
     private void Start()
     {
         canShoot = true;
+        //Quaternion.LookRotation(-Vector3.forward, Vector3.up);
     }
 
     public void ShootCannon()
@@ -32,7 +37,7 @@ public class LookAtReticle : MonoBehaviour
         {
             //Debug.Log("Player Shot");
             _smokeParticle.Play();
-            StartCoroutine(Shoot(_projectile));
+            StartCoroutine(Shoot(this._projectile));
         }
     }
 
