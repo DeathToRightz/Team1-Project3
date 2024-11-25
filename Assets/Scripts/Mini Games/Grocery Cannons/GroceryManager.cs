@@ -5,13 +5,15 @@ using TMPro;
 
 public class GroceryManager : MonoBehaviour
 {
-    [SerializeField] public TMP_Text PlayerOneText;
-    [SerializeField] public TMP_Text PlayerTwoText;
+    Level3Timer level3Timer;
+    [SerializeField] public TMP_Text PlayerOneText, PlayerTwoText, winText;
+    
 
     private int blockCount = 0;
 
     private void Start()
     {
+        level3Timer = FindObjectOfType<Level3Timer>();
         // Count all blocks in the scene at the start
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;
         Debug.Log(blockCount);
@@ -35,26 +37,27 @@ public class GroceryManager : MonoBehaviour
     {
         PlayerOneText.text = "PlayerOnePoints: " + PlayerOneScore;
         PlayerTwoText.text = "PlayerTwoPoints: " + PlayerTwoScore;
+
+        if (blockCount <= 0 || !level3Timer.timerIsRunning)
+        {
+            if (PlayerOneScore > PlayerTwoScore)
+            {
+                winText.text = "Player One Wins";
+            }
+            else if (PlayerOneScore < PlayerTwoScore)
+            {
+                winText.text = "Player Two Wins";
+            }
+            else
+            {
+                winText.text = "Tie";
+            }
+        }
     }
 
     // Method to reduce block count when a block is destroyed
     public void BlockDestroyed()
     {
         blockCount--;
-
-        if (blockCount <= 0)
-        {
-            // You can add logic here for when all blocks are destroyed
-            Debug.Log("All blocks destroyed! Game over!");
-
-            if (PlayerOneScore > PlayerTwoScore)
-            {
-                Debug.Log("Player One Has Won");
-            }
-            else
-            {
-                Debug.Log("Player two Has Won");
-            }
-        }
     }
 }
