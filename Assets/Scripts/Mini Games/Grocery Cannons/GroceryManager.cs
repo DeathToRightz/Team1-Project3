@@ -38,7 +38,7 @@ public class GroceryManager : MonoBehaviour
         PlayerOneText.text = "PlayerOnePoints: " + PlayerOneScore;
         PlayerTwoText.text = "PlayerTwoPoints: " + PlayerTwoScore;
 
-        if (blockCount <= 0 || !level3Timer.timerIsRunning)
+        /*if (blockCount <= 0 || !level3Timer.timerIsRunning)
         {
             if (PlayerOneScore > PlayerTwoScore)
             {
@@ -52,7 +52,7 @@ public class GroceryManager : MonoBehaviour
             {
                 winText.text = "Tie";
             }
-        }
+        }*/
     }
 
     // Method to reduce block count when a block is destroyed

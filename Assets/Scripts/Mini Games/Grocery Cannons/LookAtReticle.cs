@@ -14,12 +14,20 @@ public class LookAtReticle : MonoBehaviour
     [SerializeField] private Vector3 _direction;
     [SerializeField] Transform _shootPoint;
     [SerializeField] public PlayableDirector groceryCannondirector;
-    private Vector3 _newDirection;
-   
+    public Vector3 _newDirection;
+    private Quaternion _desiredRotation;
     void Update()
     {
-      _newDirection = (transform.position - target.position);        
-      transform.LookAt(_newDirection);
+        _newDirection = (target.position - transform.position);
+        _desiredRotation = Quaternion.LookRotation(_newDirection, Vector3.up);
+
+
+        transform.rotation = _desiredRotation * Quaternion.Euler(0, 182, 0);
+        //transform.LookAt(_newDirection);
+      //  transform.rotation =  Quaternion.Euler(0, -30f, 0);
+
+           
+        // transform.LookAt(_newDirection);
         //transform.LookAt(transform.position - target.position);
        
     }
