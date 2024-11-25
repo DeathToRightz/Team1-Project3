@@ -4695,11 +4695,11 @@ Transform:
   m_GameObject: {fileID: 537338234}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.5, y: 0, z: 22.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2028565558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &537338237
 MonoBehaviour:
@@ -4713,7 +4713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81812a7c640191241bf9b954273b2ad7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerIsRunning: 0
+  timeRemaining: 10
   timerText: {fileID: 1306337298}
 --- !u!1001 &539140764
 PrefabInstance:
@@ -6994,6 +6994,7 @@ MonoBehaviour:
   _direction: {x: 0, y: 0, z: 0}
   _shootPoint: {fileID: 794664094}
   groceryCannondirector: {fileID: 794664096}
+  _newDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &794664098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12079,6 +12080,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 3832768326347107953, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4058278125327125399, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.29
@@ -12117,6 +12122,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4058278125327125399, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136021932671817099, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8622611455770898799, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
@@ -17167,6 +17176,7 @@ Transform:
   - {fileID: 97096439}
   - {fileID: 61444804}
   - {fileID: 1456612920}
+  - {fileID: 537338236}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2041400689 stripped
@@ -17851,7 +17861,6 @@ SceneRoots:
   - {fileID: 692070617}
   - {fileID: 484208581}
   - {fileID: 2028565558}
-  - {fileID: 537338236}
   - {fileID: 93038508}
   - {fileID: 1309564125}
   - {fileID: 1282982643}

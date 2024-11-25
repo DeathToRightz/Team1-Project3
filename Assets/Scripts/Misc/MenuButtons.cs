@@ -53,6 +53,11 @@ public class MenuButtons : MonoBehaviour
         FadeScreen.instance.FadeOut(3, true, "Level_2_Scene");
     }
 
+    public void LevelThreeLoad()
+    {
+        Debug.Log("Level 3 loading");
+        FadeScreen.instance.FadeOut(3, true, "Level_3_Scene");
+    }
     IEnumerator DelayQuit(float delayFade)
     {
         FadeScreen.instance.FadeOut(delayFade, false, null);

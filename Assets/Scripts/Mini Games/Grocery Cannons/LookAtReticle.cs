@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
-using UnityEngine.Windows;
+
 
 public class LookAtReticle : MonoBehaviour
 {
@@ -23,12 +23,8 @@ public class LookAtReticle : MonoBehaviour
 
 
         transform.rotation = _desiredRotation * Quaternion.Euler(0, 182, 0);
-        //transform.LookAt(_newDirection);
-      //  transform.rotation =  Quaternion.Euler(0, -30f, 0);
 
-           
-        // transform.LookAt(_newDirection);
-        //transform.LookAt(transform.position - target.position);
+        
        
     }
 
@@ -44,7 +40,7 @@ public class LookAtReticle : MonoBehaviour
         if (canShoot == true)
         {
             //Debug.Log("Player Shot");
-            _smokeParticle.Play();
+            
             StartCoroutine(Shoot(this._projectile));
         }
     }
@@ -53,11 +49,13 @@ public class LookAtReticle : MonoBehaviour
     {
         canShoot = false;
         groceryCannondirector.Play();
+       
         yield return new WaitForSeconds(1.2f);
         GameObject projectile = null;
         projectile = Instantiate(incomingGameObject,_shootPoint.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.AddForce(_direction * powa);
+        _smokeParticle.Play();
         yield return new WaitForSeconds(0.5f);
         canShoot = true;
         yield return null;

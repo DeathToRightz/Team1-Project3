@@ -4,20 +4,31 @@ using UnityEngine;
 using TMPro;
 public class Level3Timer : MonoBehaviour
 {
-    private float timeRemaining = 10f;
-    [SerializeField] public bool timerIsRunning = false;
+    [SerializeField] public float timeRemaining = 10f;
+    //[SerializeField] public bool timerIsRunning = false;
     [SerializeField] public TMP_Text timerText;
 
     // Start is called before the first frame update
     void Start()
     {
-        timerIsRunning = true;
+        //timerIsRunning = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (timerIsRunning)
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+            DisplayTime(timeRemaining);
+        }
+        else if (timeRemaining < 0)
+        {
+            timeRemaining = 0;
+          //  timerIsRunning = false;
+            Debug.Log("Time over");
+        }
+        /*if (timerIsRunning)
         {
             if (timeRemaining > 0)
             {
@@ -29,7 +40,7 @@ public class Level3Timer : MonoBehaviour
                 timeRemaining = 0;
                 timerIsRunning = false;
             }
-        }
+        }*/
     }
 
     void DisplayTime(float timeToDisplay)
