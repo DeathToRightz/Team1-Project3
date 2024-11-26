@@ -2,11 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class MenuButtons : MonoBehaviour
 {
     [SerializeField] GameObject secondSetOfButtons;
     [SerializeField] GameObject firstSetOfButtons;
-
+    [SerializeField] Sprite[] comicsPanels;
+    [SerializeField] Canvas _canvas;
+    private void Awake()
+    {
+        Debug.Log(FadeScreen.instance.cutScenePlayed!);
+    }
     private void Start()
     {
         Cursor.visible = true;
@@ -15,11 +21,16 @@ public class MenuButtons : MonoBehaviour
     public void OnClickStartButton()
     {
         Debug.Log("Start");
+        if (!FadeScreen.instance.cutScenePlayed) { FadeScreen.instance.cutScenePlayed = true; FadeScreen.instance.FadeOut(1, true, "Story Time"); return; }
         ToggleButtons(secondSetOfButtons,true);
-        ToggleButtons(firstSetOfButtons,false);
-        
+        ToggleButtons(firstSetOfButtons,false);      
+    }
 
-       // FadeScreen.instance.FadeOut(3, true, "Level_1_Scene");
+    public void NextPanel()
+    {
+        if(_canvas.GetComponent<Image>().sprite == comicsPanels[1]) { FadeScreen.instance.FadeOut(1, true, "Main Menu"); }
+        _canvas.GetComponent<Image>().sprite = comicsPanels[1];
+        
     }
 
     public void OnClickQuitButton()

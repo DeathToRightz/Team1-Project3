@@ -45,4 +45,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Game Scenes/Levels/Level_3/Level_3_Scene.unity
     guid: 2da38606fe49ba84d92869d8ade0ca34
+  - enabled: 1
+    path: Assets/Scenes/Main Game Scenes/Story Time.unity
+    guid: a6baf2e6ce7cd7d478196eb5a2dfe639
   m_configObjects: {}

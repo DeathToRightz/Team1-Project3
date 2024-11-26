@@ -9,7 +9,7 @@ public class FadeScreen : MonoBehaviour
     private float alphaValueHolder;
     private bool _alphaChanging = false;
     public static FadeScreen instance { get { return _instance; } }
-
+    [SerializeField] public bool cutScenePlayed = false;
     private void Awake()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
