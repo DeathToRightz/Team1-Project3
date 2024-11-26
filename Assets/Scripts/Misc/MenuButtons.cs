@@ -27,6 +27,11 @@ public class MenuButtons : MonoBehaviour
         StartCoroutine(DelayQuit(3));
     }
 
+    public void BackToMainMenu()
+    {
+        FadeScreen.instance.FadeOut(1, true, "Main Menu");
+    }
+
     public void OnClickBackButton()
     {
         Debug.Log("Back");
@@ -38,25 +43,25 @@ public class MenuButtons : MonoBehaviour
     public void OnClickCreditsButton()
     {
         Debug.Log("Credits");
-       // FadeScreen.instance.FadeOut(3, true, "Credits");
+        FadeScreen.instance.FadeOut(1, true, "Credits");
     }
 
     public void LevelOneLoad()
     {
-        Debug.Log("Level 1 loading");
-        FadeScreen.instance.FadeOut(3, true, "Level_1_Help");
+        Debug.Log("Level 1 help loading");
+        FadeScreen.instance.FadeOut(1, true, "Level_1_Help");
     }
 
     public void LevelTwoLoad()
     {
-        Debug.Log("Level 2 loading");
-        FadeScreen.instance.FadeOut(3, true, "Level_2_Scene");
+        Debug.Log("Level 2 help loading");
+        FadeScreen.instance.FadeOut(1, true, "Level_2_Help");
     }
 
     public void LevelThreeLoad()
     {
-        Debug.Log("Level 3 loading");
-        FadeScreen.instance.FadeOut(3, true, "Level_3_Scene");
+        Debug.Log("Level 3 help loading");
+        FadeScreen.instance.FadeOut(1, true, "Level_3_Help");
     }
     IEnumerator DelayQuit(float delayFade)
     {

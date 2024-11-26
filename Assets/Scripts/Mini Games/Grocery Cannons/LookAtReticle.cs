@@ -11,10 +11,10 @@ public class LookAtReticle : MonoBehaviour
     [SerializeField] public Transform target;
     [SerializeField] public ParticleSystem _smokeParticle;
     [SerializeField] public GameObject _projectile;
-    [SerializeField] private Vector3 _direction;
+      private Vector3 _direction;
     [SerializeField] Transform _shootPoint;
     [SerializeField] public PlayableDirector groceryCannondirector;
-    public Vector3 _newDirection;
+    private Vector3 _newDirection;
     private Quaternion _desiredRotation;
     void Update()
     {

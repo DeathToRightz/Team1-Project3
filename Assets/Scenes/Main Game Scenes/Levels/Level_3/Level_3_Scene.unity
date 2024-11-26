@@ -6496,7 +6496,7 @@ Transform:
   m_GameObject: {fileID: 724822333}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 11.84, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6990,11 +6990,9 @@ MonoBehaviour:
   powa: 105
   target: {fileID: 1616332812}
   _smokeParticle: {fileID: 794664093}
-  _projectile: {fileID: 5764951680676324085, guid: b65297045bb496f49abec69196054476, type: 3}
-  _direction: {x: 0, y: 0, z: 0}
+  _projectile: {fileID: 7577247254119652218, guid: fbf579dbf0bfc43469be50f8df532b06, type: 3}
   _shootPoint: {fileID: 794664094}
   groceryCannondirector: {fileID: 794664096}
-  _newDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &794664098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12136,6 +12134,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 97096439}
+    - target: {fileID: 8622611455770898799, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 5579434890466206263, guid: da623178bba51dc4298820f92f570ec8, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
