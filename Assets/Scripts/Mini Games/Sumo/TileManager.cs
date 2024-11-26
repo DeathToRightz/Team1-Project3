@@ -39,7 +39,7 @@ public class TileManager : MonoBehaviour
             int tileIndex = Random.Range(0, incomingList.Count);
             Debug.Log("Tile index is " + tileIndex);
             if (incomingList[tileIndex] == null) { Debug.Log("Tile not here"); }
-            if (incomingList[tileIndex].GetComponent<Falling_Platform>() == null) { Debug.Log("Add script"); incomingList[tileIndex].AddComponent<Falling_Platform>(); }
+            if (incomingList[tileIndex].GetComponent<Falling_Platform>() == null) { Debug.Log("Add script"); incomingList[tileIndex].AddComponent<Falling_Platform>(); incomingList.Remove(incomingList[tileIndex]); }
             else { Debug.Log("Dont add script"); }
             yield return new WaitForSeconds(5);
         }
