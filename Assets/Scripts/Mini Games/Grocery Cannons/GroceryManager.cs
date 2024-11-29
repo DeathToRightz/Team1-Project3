@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GroceryManager : MonoBehaviour
 {
@@ -49,32 +50,31 @@ public class GroceryManager : MonoBehaviour
 
     private void DetermineWinner(bool gameCondition)
     {
-       if(isGameOver)
-        {
-           
-            return;
-        }
-        if(gameCondition)
-        {
+       if (isGameOver) return;
+
+       if(gameCondition)
+       {
             if (PlayerOneScore > PlayerTwoScore)
             {
-               
+                FindObjectOfType<RoundTranker>().OnPlayerWinRound(1);
                 winText.text = "Player One Wins";
-                FadeScreen.instance.FadeOut(3, true, "Main Menu");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //FadeScreen.instance.FadeOut(3, true, "Main Menu");
                 isGameOver = true;               
             }
             else if (PlayerOneScore < PlayerTwoScore)
             {
+                FindObjectOfType<RoundTranker>().OnPlayerWinRound(2);
                 winText.text = "Player Two Wins";
-                FadeScreen.instance.FadeOut(3, true, "Main Menu");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                //FadeScreen.instance.FadeOut(3, true, "Main Menu");
                 isGameOver = true;               
             }
-            else
-            {
-                winText.text = "Tie";
-                FadeScreen.instance.FadeOut(3, true, "Main Menu");
+           else if (RoundTranker.instance.currentRound == 2)
+           {
+                RoundTranker.instance.EndGame();
                 isGameOver = true;              
-            }
-        }
+           }
+       }
     }
 }
