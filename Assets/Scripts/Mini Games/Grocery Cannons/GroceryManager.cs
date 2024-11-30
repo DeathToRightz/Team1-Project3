@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GroceryManager : MonoBehaviour
 {
+    RoundTranker roundTranker;
     Level3Timer level3Timer;
     [SerializeField] public TMP_Text PlayerOneText, PlayerTwoText, winText;
     private bool isGameOver = false;
@@ -58,21 +59,19 @@ public class GroceryManager : MonoBehaviour
             {
                 FindObjectOfType<RoundTranker>().OnPlayerWinRound(1);
                 winText.text = "Player One Wins";
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 //FadeScreen.instance.FadeOut(3, true, "Main Menu");
-                isGameOver = true;               
+                              
             }
             else if (PlayerOneScore < PlayerTwoScore)
             {
                 FindObjectOfType<RoundTranker>().OnPlayerWinRound(2);
                 winText.text = "Player Two Wins";
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 //FadeScreen.instance.FadeOut(3, true, "Main Menu");
-                isGameOver = true;               
+                            
             }
-           else if (RoundTranker.instance.currentRound == 2)
+           else if (roundTranker.currentRound == 2)
            {
-                RoundTranker.instance.EndGame();
+                FadeScreen.instance.FadeOut(3, true, "Main Menu");
                 isGameOver = true;              
            }
        }
