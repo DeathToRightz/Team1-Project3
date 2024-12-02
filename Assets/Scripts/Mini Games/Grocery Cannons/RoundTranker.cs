@@ -6,11 +6,15 @@ using UnityEngine.UI;
 
 public class RoundTranker : MonoBehaviour
 {
+    GroceryManager groceryManager;
     [SerializeField] private GameObject[] roundObjects;
     [SerializeField] private Image[] roundIndicators;
     [SerializeField] private Sprite redCircleSprite, blueCircleSprite, emptyCircleSprite;
     [SerializeField] public int currentRound = 0;
-    
+
+    [SerializeField] public int playerOneWins = 0;
+    [SerializeField] public int playerTwoWins = 0;
+
     private void Start()
     {
         ResetRounds();
@@ -24,13 +28,17 @@ public class RoundTranker : MonoBehaviour
             if (playerID == 1)
             {
                 roundIndicators[currentRound].sprite = redCircleSprite;
+                playerOneWins++;
             }
             else if (playerID == 2)
             {
                 roundIndicators[currentRound].sprite = blueCircleSprite;
+                playerTwoWins++;
             }
             currentRound++;
             UpdateRoundVisibility();  // Update visibility for the next round
+            FadeScreen.instance.FadeIn(3f);
+            groceryManager.StartCoroutine(groceryManager.ResetNumbers());
         }
         else
         {
@@ -56,8 +64,5 @@ public class RoundTranker : MonoBehaviour
         currentRound = 0;  // Reset round counter
         UpdateRoundVisibility();  // Show the first round's GameObject
     }
-
-    
-
    
 }

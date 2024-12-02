@@ -28,19 +28,6 @@ public class Level3Timer : MonoBehaviour
           //  timerIsRunning = false;
             Debug.Log("Time over");
         }
-        /*if (timerIsRunning)
-        {
-            if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-                DisplayTime(timeRemaining);
-            }
-            else if (timeRemaining < 0)
-            {
-                timeRemaining = 0;
-                timerIsRunning = false;
-            }
-        }*/
     }
 
     void DisplayTime(float timeToDisplay)

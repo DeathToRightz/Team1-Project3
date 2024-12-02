@@ -11,10 +11,11 @@ public class GroceryManager : MonoBehaviour
     [SerializeField] public TMP_Text PlayerOneText, PlayerTwoText, winText;
     private bool isGameOver = false;
     private int PlayerOneScore = 0, PlayerTwoScore = 0;
-    private int blockCount;
+    [SerializeField] public int blockCount;
 
     private void Awake()
     {
+        roundTranker = FindAnyObjectByType<RoundTranker>();
         level3Timer = FindObjectOfType<Level3Timer>();
         // Count all blocks in the scene at the start
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;
@@ -39,8 +40,7 @@ public class GroceryManager : MonoBehaviour
     {
         PlayerOneText.text = "PlayerOnePoints: " + PlayerOneScore;
         PlayerTwoText.text = "PlayerTwoPoints: " + PlayerTwoScore;
-
-        DetermineWinner(blockCount <= 0 || level3Timer.timeRemaining <= 0f);       
+        DetermineWinner(blockCount <= 0 || level3Timer.timeRemaining <= 0f);
     }
 
     // Method to reduce block count when a block is destroyed
@@ -55,25 +55,43 @@ public class GroceryManager : MonoBehaviour
 
        if(gameCondition)
        {
-            if (PlayerOneScore > PlayerTwoScore)
+            if (roundTranker.currentRound < 2)
             {
-                FindObjectOfType<RoundTranker>().OnPlayerWinRound(1);
-                winText.text = "Player One Wins";
-                //FadeScreen.instance.FadeOut(3, true, "Main Menu");
-                              
+                if (PlayerOneScore > PlayerTwoScore)
+                {
+                    //Debug.Log("Player one won round one");
+                    roundTranker.OnPlayerWinRound(1);
+                    
+                }
+                else if (PlayerOneScore < PlayerTwoScore)
+                {
+                    roundTranker.OnPlayerWinRound(2);
+                    //Debug.Log("Player Two won round one");
+                    StartCoroutine(ResetNumbers());
+                }
             }
-            else if (PlayerOneScore < PlayerTwoScore)
+            else if (roundTranker.playerOneWins >= 2 || roundTranker.playerTwoWins >= 2)
             {
-                FindObjectOfType<RoundTranker>().OnPlayerWinRound(2);
-                winText.text = "Player Two Wins";
-                //FadeScreen.instance.FadeOut(3, true, "Main Menu");
-                            
-            }
-           else if (roundTranker.currentRound == 2)
-           {
+                if (roundTranker.playerOneWins > roundTranker.playerTwoWins)
+                {
+                    winText.text = "Player One Wins";
+                }
+                else if (roundTranker.playerOneWins < roundTranker.playerTwoWins)
+                {
+                    winText.text = "Player Two Wins";
+                }
                 FadeScreen.instance.FadeOut(3, true, "Main Menu");
                 isGameOver = true;              
-           }
-       }
+            }
+        }
+    }
+
+    IEnumerator ResetNumbers()
+    {
+        FadeScreen.instance.FadeOut(1, false, null);
+        yield return new WaitForSeconds(2f);
+        level3Timer.timeRemaining = 25;
+        PlayerOneScore = 0;
+        PlayerTwoScore = 0;
     }
 }
