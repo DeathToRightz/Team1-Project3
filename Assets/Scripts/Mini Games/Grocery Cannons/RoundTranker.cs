@@ -17,6 +17,7 @@ public class RoundTranker : MonoBehaviour
 
     private void Start()
     {
+        groceryManager = FindAnyObjectByType<GroceryManager>();
         ResetRounds();
         UpdateRoundVisibility();
     }
@@ -37,8 +38,6 @@ public class RoundTranker : MonoBehaviour
             }
             currentRound++;
             UpdateRoundVisibility();  // Update visibility for the next round
-            FadeScreen.instance.FadeIn(3f);
-           // groceryManager.StartCoroutine(groceryManager.ResetNumbers());
         }
         else
         {

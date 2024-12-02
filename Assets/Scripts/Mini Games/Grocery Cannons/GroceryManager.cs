@@ -8,6 +8,8 @@ public class GroceryManager : MonoBehaviour
 {
     RoundTranker roundTranker;
     Level3Timer level3Timer;
+    LookAtReticle lookAtReticle;
+    private bool winnerDetermined = false;
     [SerializeField] public TMP_Text PlayerOneText, PlayerTwoText, winText;
     private bool isGameOver = false;
     private int PlayerOneScore = 0, PlayerTwoScore = 0;
@@ -15,11 +17,11 @@ public class GroceryManager : MonoBehaviour
 
     private void Awake()
     {
+        lookAtReticle = FindAnyObjectByType<LookAtReticle>();
         roundTranker = FindAnyObjectByType<RoundTranker>();
         level3Timer = FindObjectOfType<Level3Timer>();
         // Count all blocks in the scene at the start
         blockCount = GameObject.FindGameObjectsWithTag("Block").Length;
-        Debug.Log(blockCount);
     }
 
     // Method to award points to the appropriate player
@@ -40,7 +42,10 @@ public class GroceryManager : MonoBehaviour
     {
         PlayerOneText.text = "PlayerOnePoints: " + PlayerOneScore;
         PlayerTwoText.text = "PlayerTwoPoints: " + PlayerTwoScore;
-        DetermineWinner(blockCount <= 0 || level3Timer.timeRemaining <= 0f);
+        if (!winnerDetermined && (blockCount <= 0 || level3Timer.timeRemaining <= 0f))
+        {
+            DetermineWinner();
+        }
     }
 
     // Method to reduce block count when a block is destroyed
@@ -49,49 +54,59 @@ public class GroceryManager : MonoBehaviour
         blockCount--;
     }
 
-    private void DetermineWinner(bool gameCondition)
+    private void DetermineWinner()
     {
        if (isGameOver) return;
 
-       if(gameCondition)
+       winnerDetermined = true;
+       if (roundTranker.currentRound < 2)
        {
-            if (roundTranker.currentRound < 2)
+            lookAtReticle.canShoot = false;
+            if (PlayerOneScore > PlayerTwoScore)
             {
-                if (PlayerOneScore > PlayerTwoScore)
-                {
-                    //Debug.Log("Player one won round one");
-                    roundTranker.OnPlayerWinRound(1);
-                    
-                }
-                else if (PlayerOneScore < PlayerTwoScore)
-                {
-                    roundTranker.OnPlayerWinRound(2);
-                    //Debug.Log("Player Two won round one");
-                    StartCoroutine(ResetNumbers());
-                }
+                roundTranker.OnPlayerWinRound(1);
+                EndGame();
+                StartCoroutine(ResetNumbers());
             }
-            else if (roundTranker.playerOneWins >= 2 || roundTranker.playerTwoWins >= 2)
+            else if (PlayerOneScore < PlayerTwoScore)
             {
-                if (roundTranker.playerOneWins > roundTranker.playerTwoWins)
-                {
-                    winText.text = "Player One Wins";
-                }
-                else if (roundTranker.playerOneWins < roundTranker.playerTwoWins)
-                {
-                    winText.text = "Player Two Wins";
-                }
-                FadeScreen.instance.FadeOut(3, true, "Main Menu");
-                isGameOver = true;              
+                roundTranker.OnPlayerWinRound(2);
+                EndGame();
+                StartCoroutine(ResetNumbers());
             }
+       }
+    }
+
+    public void EndGame()
+    {
+        if (roundTranker.playerOneWins > 1 || roundTranker.playerTwoWins > 1)
+        {
+            if (roundTranker.playerOneWins > roundTranker.playerTwoWins)
+            {
+                winText.text = "Player One Wins";
+            }
+            else if (roundTranker.playerOneWins < roundTranker.playerTwoWins)
+            {
+                winText.text = "Player Two Wins";
+            }
+            FadeScreen.instance.FadeOut(3, true, "Main Menu");
+            isGameOver = true;
         }
     }
 
-    IEnumerator ResetNumbers()
+    public IEnumerator ResetNumbers()
     {
-        FadeScreen.instance.FadeOut(1, false, null);
-        yield return new WaitForSeconds(2f);
-        level3Timer.timeRemaining = 25;
-        PlayerOneScore = 0;
-        PlayerTwoScore = 0;
+        if (!isGameOver)
+        {
+            FadeScreen.instance.FadeOut(1, false, null);
+            yield return new WaitForSeconds(4f);
+            FadeScreen.instance.FadeIn(3);
+            yield return new WaitForSeconds(0.3f);
+            lookAtReticle.canShoot = true;
+            level3Timer.timeRemaining = 25;
+            winnerDetermined = false;
+            PlayerOneScore = 0;
+            PlayerTwoScore = 0;
+        }
     }
 }
