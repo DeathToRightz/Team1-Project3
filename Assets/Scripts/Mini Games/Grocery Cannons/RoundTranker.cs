@@ -24,8 +24,6 @@ public class RoundTranker : MonoBehaviour
 
     public void OnPlayerWinRound(int playerID)
     {
-        if (currentRound < roundObjects.Length)
-        {
             if (playerID == 1)
             {
                 roundIndicators[currentRound].sprite = redCircleSprite;
@@ -36,13 +34,13 @@ public class RoundTranker : MonoBehaviour
                 roundIndicators[currentRound].sprite = blueCircleSprite;
                 playerTwoWins++;
             }
+            else if (playerID == 3)
+            {
+                roundIndicators[currentRound].sprite = emptyCircleSprite;
+                groceryManager.TieEndGame();
+            }
             currentRound++;
             UpdateRoundVisibility();  // Update visibility for the next round
-        }
-        else
-        {
-            Debug.Log("All rounds completed!");
-        }
 
     }
 

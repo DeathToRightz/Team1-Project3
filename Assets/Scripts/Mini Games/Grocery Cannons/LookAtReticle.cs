@@ -11,7 +11,7 @@ public class LookAtReticle : MonoBehaviour
     [SerializeField] public Transform target;
     [SerializeField] public ParticleSystem _smokeParticle;
     [SerializeField] public GameObject _projectile;
-      private Vector3 _direction;
+    private Vector3 _direction;
     [SerializeField] Transform _shootPoint;
     [SerializeField] public PlayableDirector groceryCannondirector;
     private Vector3 _newDirection;
@@ -23,7 +23,6 @@ public class LookAtReticle : MonoBehaviour
 
 
         transform.rotation = _desiredRotation * Quaternion.Euler(0, 182, 0);
-
         
        
     }

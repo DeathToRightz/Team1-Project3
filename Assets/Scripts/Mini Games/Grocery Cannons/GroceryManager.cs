@@ -44,6 +44,7 @@ public class GroceryManager : MonoBehaviour
         PlayerTwoText.text = "PlayerTwoPoints: " + PlayerTwoScore;
         if (!winnerDetermined && (blockCount <= 0 || level3Timer.timeRemaining <= 0f))
         {
+            lookAtReticle.canShoot = true;
             DetermineWinner();
         }
     }
@@ -74,7 +75,13 @@ public class GroceryManager : MonoBehaviour
                 EndGame();
                 StartCoroutine(ResetNumbers());
             }
-       }
+            else if (PlayerOneScore == PlayerTwoScore)
+            {
+                roundTranker.OnPlayerWinRound(3);
+                EndGame();
+                StartCoroutine(ResetNumbers());
+            }
+        }
     }
 
     public void EndGame()
@@ -94,6 +101,13 @@ public class GroceryManager : MonoBehaviour
         }
     }
 
+    public void TieEndGame()
+    {
+        winText.text = "You guys are Trash. Touch some grass";
+        FadeScreen.instance.FadeOut(3, true, "Main Menu");
+        isGameOver = true;
+    }
+
     public IEnumerator ResetNumbers()
     {
         if (!isGameOver)
@@ -102,7 +116,6 @@ public class GroceryManager : MonoBehaviour
             yield return new WaitForSeconds(4f);
             FadeScreen.instance.FadeIn(3);
             yield return new WaitForSeconds(0.3f);
-            lookAtReticle.canShoot = true;
             level3Timer.timeRemaining = 25;
             winnerDetermined = false;
             PlayerOneScore = 0;
