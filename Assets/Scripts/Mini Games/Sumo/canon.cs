@@ -32,10 +32,11 @@ public class canon : MonoBehaviour
 
     private void Awake()
     {
-        LookForPlayers(_players);
+       
     }
     private void Start()
     {
+       
         deathPit = FindObjectOfType<DeathPit>();
         LookForPlayers(_players);
         StartCoroutine(SpawnProjectile(_projectiles));     
@@ -111,7 +112,7 @@ public class canon : MonoBehaviour
     {
         if (incomingBool)
         {
-            switch (Random.Range(0, incomingTargets.Count))
+            switch (Random.Range(0, incomingTargets.Count-1))
             {
                 case 0:
                     incomingTransform.LookAt(incomingTargets[0].transform);
@@ -133,8 +134,8 @@ public class canon : MonoBehaviour
     {
         if (incomingBool)
         {
-            Debug.DrawLine(_shootPos.position, _players[0].transform.position, Color.blue);
-            Debug.DrawLine(_shootPos.position, _players[1].transform.position, Color.red);
+            Debug.DrawLine(this._shootPos.position, _players[0].transform.position, Color.blue);
+            Debug.DrawLine(this._shootPos.position, _players[1].transform.position, Color.red);
         }
         
     }
