@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-
-public class LookAtReticle : MonoBehaviour
+public class ReticleRayCast : MonoBehaviour
 {
-    /*
     [SerializeField] public bool canShoot;
     [SerializeField] public float powa = 100f;
     [SerializeField] public Transform target;
@@ -24,8 +22,8 @@ public class LookAtReticle : MonoBehaviour
 
 
         transform.rotation = _desiredRotation * Quaternion.Euler(0, 182, 0);
-        
-       
+
+
     }
 
     private void Start()
@@ -40,7 +38,7 @@ public class LookAtReticle : MonoBehaviour
         if (canShoot == true)
         {
             //Debug.Log("Player Shot");
-            
+
             StartCoroutine(Shoot(this._projectile));
         }
     }
@@ -49,10 +47,10 @@ public class LookAtReticle : MonoBehaviour
     {
         canShoot = false;
         groceryCannondirector.Play();
-       
+
         yield return new WaitForSeconds(1.2f);
         GameObject projectile = null;
-        projectile = Instantiate(incomingGameObject,_shootPoint.position, Quaternion.identity);
+        projectile = Instantiate(incomingGameObject, _shootPoint.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.AddForce(_direction * powa);
         _smokeParticle.Play();
@@ -61,5 +59,4 @@ public class LookAtReticle : MonoBehaviour
         yield return null;
 
     }
-    */
 }

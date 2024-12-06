@@ -37,7 +37,6 @@ public class RoundTranker : MonoBehaviour
             else if (playerID == 3)
             {
                 roundIndicators[currentRound].sprite = emptyCircleSprite;
-                groceryManager.TieEndGame();
             }
             currentRound++;
             UpdateRoundVisibility();  // Update visibility for the next round

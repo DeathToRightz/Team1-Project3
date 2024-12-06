@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2677197455295789623, guid: ae7b8858f5ddb7749b3f7995dcb531fb, type: 3}
+      propertyPath: m_Mass
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2823426038785591733, guid: ae7b8858f5ddb7749b3f7995dcb531fb, type: 3}
       propertyPath: m_Name
       value: RedBall

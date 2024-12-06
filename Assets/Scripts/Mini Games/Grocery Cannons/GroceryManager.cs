@@ -99,6 +99,10 @@ public class GroceryManager : MonoBehaviour
             FadeScreen.instance.FadeOut(3, true, "Main Menu");
             isGameOver = true;
         }
+        else if (roundTranker.playerOneWins > 1 && roundTranker.playerTwoWins > 1 && roundTranker.currentRound == 2)
+        {
+            TieEndGame();
+        }
     }
 
     public void TieEndGame()
