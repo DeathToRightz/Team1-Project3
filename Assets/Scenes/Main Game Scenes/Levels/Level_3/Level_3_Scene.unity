@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10714,7 +10714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canShoot: 0
-  powa: 105
+  powa: 100
   target: {fileID: 1616332812}
   _smokeParticle: {fileID: 794664093}
   _projectile: {fileID: 7577247254119652218, guid: fbf579dbf0bfc43469be50f8df532b06, type: 3}
@@ -18413,12 +18413,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8622611455770898799, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
       propertyPath: powa
-      value: 105
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8622611455770898799, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 97096439}
+    - target: {fileID: 8622611455770898799, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 692070616}
     - target: {fileID: 8622611455770898799, guid: 2dc08da536f953e43a3852fd8c09e657, type: 3}
       propertyPath: _projectile
       value: 

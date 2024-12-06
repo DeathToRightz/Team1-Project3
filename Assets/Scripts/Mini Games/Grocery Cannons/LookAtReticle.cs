@@ -6,7 +6,7 @@ using UnityEngine.Playables;
 
 public class LookAtReticle : MonoBehaviour
 {
-    /*
+    
     [SerializeField] public bool canShoot;
     [SerializeField] public float powa = 100f;
     [SerializeField] public Transform target;
@@ -61,5 +61,5 @@ public class LookAtReticle : MonoBehaviour
         yield return null;
 
     }
-    */
+    
 }
