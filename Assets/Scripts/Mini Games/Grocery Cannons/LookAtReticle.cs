@@ -21,11 +21,7 @@ public class LookAtReticle : MonoBehaviour
     {
         _newDirection = (target.position - transform.position);
         _desiredRotation = Quaternion.LookRotation(_newDirection, Vector3.up);
-
-
         transform.rotation = _desiredRotation * Quaternion.Euler(0, 182, 0);
-        
-       
     }
 
     private void Start()
@@ -36,9 +32,19 @@ public class LookAtReticle : MonoBehaviour
 
     public void ShootCannon()
     {
-        _direction = target.position - transform.position;
+        //_direction = target.position - transform.position;
         if (canShoot == true)
         {
+            RaycastHit hit;
+
+            if (Physics.Raycast(_shootPoint.position, _direction.normalized, out hit))
+            {
+                _direction = (hit.point - _shootPoint.position).normalized;
+            }
+            else
+            {
+                _direction = _direction.normalized;
+            }
             //Debug.Log("Player Shot");
             
             StartCoroutine(Shoot(this._projectile));
@@ -51,10 +57,12 @@ public class LookAtReticle : MonoBehaviour
         groceryCannondirector.Play();
        
         yield return new WaitForSeconds(1.2f);
-        GameObject projectile = null;
-        projectile = Instantiate(incomingGameObject,_shootPoint.position, Quaternion.identity);
+        //GameObject projectile = null;
+
+        GameObject projectile = Instantiate(incomingGameObject,_shootPoint.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.AddForce(_direction * powa);
+
         _smokeParticle.Play();
         yield return new WaitForSeconds(0.5f);
         canShoot = true;
