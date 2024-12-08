@@ -19,7 +19,7 @@ public class LookAtReticle : MonoBehaviour
     private Quaternion _desiredRotation;
     void Update()
     {
-        _newDirection = (target.position - transform.position);
+        _newDirection = (target.position - transform.position).normalized;
         _desiredRotation = Quaternion.LookRotation(_newDirection, Vector3.up);
         transform.rotation = _desiredRotation * Quaternion.Euler(0, 182, 0);
     }
@@ -32,18 +32,24 @@ public class LookAtReticle : MonoBehaviour
 
     public void ShootCannon()
     {
-        //_direction = target.position - transform.position;
         if (canShoot == true)
         {
             RaycastHit hit;
 
-            if (Physics.Raycast(_shootPoint.position, _direction.normalized, out hit))
+            if (Physics.Raycast(_shootPoint.position, (target.position - _shootPoint.position).normalized, out hit))
             {
-                _direction = (hit.point - _shootPoint.position).normalized;
+                _direction = (hit.point - target.position).normalized;
+                Debug.DrawRay(_shootPoint.position, _direction * 100f, Color.red, 2f);
+                //Debug.Log("Raycast Hit target.");
+                Debug.Log("Found target");
+
             }
             else
             {
-                _direction = _direction.normalized;
+                _direction = target.position - transform.position;
+
+                //Debug.DrawRay(_shootPoint.position, _direction * 100f, Color.yellow, 2f);
+               //Debug.LogError("Raycast did not hit anything.");
             }
             //Debug.Log("Player Shot");
             
@@ -61,7 +67,7 @@ public class LookAtReticle : MonoBehaviour
 
         GameObject projectile = Instantiate(incomingGameObject,_shootPoint.position, Quaternion.identity);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
-        rb.AddForce(_direction * powa);
+        rb.AddForce(_direction * powa * 100);
 
         _smokeParticle.Play();
         yield return new WaitForSeconds(0.5f);
@@ -69,5 +75,5 @@ public class LookAtReticle : MonoBehaviour
         yield return null;
 
     }
-    
+
 }
