@@ -7,7 +7,9 @@ public class LevelOneInput : MonoBehaviour
 
     [SerializeField] public Transform[] leverSelectionPoints;  // Define lever selection points on the stage
     [SerializeField] private float moveSpeed = 5f;  // Define movement speed
-    
+    private float positionRotationSpeed = 5f;
+    private float stageRotationSpeed = 20f;
+
     private int currentPointIndex = 0; // Current target point for movement
     private bool isMoving = false; // Is the player currently moving
     [SerializeField] public bool isInStageArea = false; // Is the player in the stage area
@@ -26,6 +28,14 @@ public class LevelOneInput : MonoBehaviour
     void Update()
     {
         // Update logic if needed (such as checking for player inputs, etc.)
+        if (isInStageArea && !isMoving)
+        {
+            RotateCharacter(90f);
+        }
+        else if (!isInStageArea && !isMoving)
+        {
+            RotateCharacter(-90f);
+        }
     }
 
 
@@ -40,6 +50,9 @@ public class LevelOneInput : MonoBehaviour
             while (Vector3.Distance(transform.position, stagePositions[i].position) > 0.1f)
             {
                 transform.position = Vector3.MoveTowards(transform.position, stagePositions[i].position, moveSpeed * Time.deltaTime);
+
+                RotateTowardsTarget(stagePositions[i]);
+
                 yield return null;
             }
         }
@@ -47,13 +60,18 @@ public class LevelOneInput : MonoBehaviour
         isMoving = false;
     }
 
+    
+
     // Move Left through lever points
     public void MoveLeft()
     {
+
         if (isInStageArea && !isMoving && currentPointIndex > 0)
         {
             currentPointIndex--;
             StartCoroutine(MoveToLeverPoint(leverSelectionPoints[currentPointIndex]));
+            RotateCharacter(0f);
+
         }
     }
 
@@ -64,6 +82,7 @@ public class LevelOneInput : MonoBehaviour
         {
             currentPointIndex++;
             StartCoroutine(MoveToLeverPoint(leverSelectionPoints[currentPointIndex]));
+            RotateCharacter(-180f);
         }
     }
 
@@ -89,29 +108,49 @@ public class LevelOneInput : MonoBehaviour
         
         isMoving = true;
 
-        while (Vector3.Distance(transform.position, exitPosition.position) > 0.1f)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, exitPosition.position, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
+         while (Vector3.Distance(transform.position, exitPosition.position) > 0.1f)
+         {
+              transform.position = Vector3.MoveTowards(transform.position, exitPosition.position, moveSpeed * Time.deltaTime);
+
+             RotateTowardsTarget(exitPosition);
+
+             yield return null;
+         }
+        
 
         isMoving = false;
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    // Rotate the player towards the target position
+    public void RotateTowardsTarget(Transform target)
     {
-        if (collision.gameObject.tag == "Stairs")
-        {
-            rb.isKinematic = true;
-        }
+        // Calculate the rotation step
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+
+        // Smoothly rotate towards the target using rotationSpeed
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, positionRotationSpeed * Time.deltaTime);
     }
 
-    private void OnCollisionExit(Collision collision)
+    public void RotateCharacter(float targetRotation)
     {
-        if (collision.gameObject.tag == "Stairs")
+        if (isInStageArea && !isMoving)
         {
-            rb.isKinematic = false;
+            // Get the current rotation in Euler angles
+            Vector3 currentRotation = transform.eulerAngles;
+
+            // Smoothly rotate to the target rotation on the Y axis, locking the X and Z rotation
+            float newRotationY = Mathf.LerpAngle(currentRotation.y, targetRotation, stageRotationSpeed * Time.deltaTime);
+
+            // Apply the new rotation while keeping X and Z axis unchanged
+            transform.rotation = Quaternion.Euler(currentRotation.x, newRotationY, currentRotation.z);
+        }
+        else
+        {
+            Vector3 currentRotation = transform.eulerAngles;
+
+            // Snap instantly to the target rotation by setting the rotation directly
+            transform.rotation = Quaternion.Euler(currentRotation.x, targetRotation, currentRotation.z);
         }
     }
 

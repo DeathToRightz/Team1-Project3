@@ -84,6 +84,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
         //levelOneInput.isInStageArea = false;
         foreach (var position in pathPositions)
         {
+            //yield return incomingContext.GetComponent<LevelOneInput>().StartCoroutine(incomingContext.GetComponent<LevelOneInput>().MoveThroughStagePositions(incomingContext.exitPathPositions));
             yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, position));
         }
 

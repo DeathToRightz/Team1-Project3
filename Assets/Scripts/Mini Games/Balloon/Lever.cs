@@ -41,10 +41,12 @@ public class Lever : MonoBehaviour
         {
             _chooseLever = _playerInput.LevelOne.OneChooseLever;
             
+
         }
         else if (_activePlayerTag == "Player2")
         {
             _chooseLever = _playerInput.LevelOne.TwoChooseLever;
+            
         }
 
         if (_chooseLever != null)
