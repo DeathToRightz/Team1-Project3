@@ -42,7 +42,7 @@ public class LevelOneInput : MonoBehaviour
     // Move the player to a specific position (lever or stage position)
     public IEnumerator MoveThroughStagePositions(Transform[] stagePositions)
     {
-        currentPointIndex = 0;
+       // currentPointIndex = 0;
         isMoving = true;
         
         for (int i = 0; i < stagePositions.Length; i++)
@@ -51,7 +51,7 @@ public class LevelOneInput : MonoBehaviour
             {
                 transform.position = Vector3.MoveTowards(transform.position, stagePositions[i].position, moveSpeed * Time.deltaTime);
 
-                RotateTowardsTarget(stagePositions[i]);
+              RotateTowardsTarget(stagePositions[i]);
 
                 yield return null;
             }
@@ -59,8 +59,9 @@ public class LevelOneInput : MonoBehaviour
 
         isMoving = false;
     }
+   
 
-    
+
 
     // Move Left through lever points
     public void MoveLeft()
@@ -126,6 +127,7 @@ public class LevelOneInput : MonoBehaviour
     {
         // Calculate the rotation step
         Vector3 direction = (target.position - transform.position).normalized;
+       
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
 
         // Smoothly rotate towards the target using rotationSpeed

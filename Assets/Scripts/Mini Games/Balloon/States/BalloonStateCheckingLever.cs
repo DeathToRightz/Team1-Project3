@@ -6,14 +6,19 @@ using UnityEngine;
 public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 {
     //Lever lever;
-
+    LevelOneInput levelOneInputref;
+    
     private void Awake()
     {
         //lever = FindObjectOfAnyType<Lever>();
     }
     public override void OnStartState(Russian_Balloon incomingContext)
-    {
-        incomingContext.StartCoroutine(MovePlayerOffStage(incomingContext.currentPlayerOnStage, incomingContext.exitPathPositions, incomingContext)); //Moves Player off the Stage
+    {       
+        levelOneInputref = incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>();
+        //incomingContext.StartCoroutine(levelOneInputref.MoveThroughStagePositions(incomingContext.exitPathPositions));
+       incomingContext.StartCoroutine(MovePlayer(incomingContext));
+       
+      // incomingContext.StartCoroutine(MovePlayerOffStage(incomingContext.currentPlayerOnStage, incomingContext.exitPathPositions, incomingContext)); //Moves Player off the Stage
        
         incomingContext.playerQueue.Enqueue(incomingContext.currentPlayerOnStage); // It will add the current player on stage to the end of the queue
        
@@ -79,17 +84,27 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
 
     private IEnumerator MovePlayerOffStage(GameObject player, Transform[] pathPositions, Russian_Balloon incomingContext)
     {
+        LevelOneInput levelOneRef = player.GetComponent<LevelOneInput>();
+
         yield return new WaitForSeconds(1.2f);
 
-        //levelOneInput.isInStageArea = false;
-        foreach (var position in pathPositions)
+        for(int i = 0; i < pathPositions.Length; i++)
         {
-            //yield return incomingContext.GetComponent<LevelOneInput>().StartCoroutine(incomingContext.GetComponent<LevelOneInput>().MoveThroughStagePositions(incomingContext.exitPathPositions));
-            yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, position));
-        }
+            while(Vector3.Distance(player.transform.position, pathPositions[i].position) > 0.1f)
+            {
+               
+                player.transform.position = Vector3.MoveTowards(player.transform.position, pathPositions[i].position, 5f * Time.deltaTime);
 
+               
+
+                yield return null;
+            }
+            player.GetComponent<LevelOneInput>().RotateTowardsTarget(pathPositions[i]);
+        }
+       
         if (incomingContext.linePositions.Length > 0)
         {
+            Debug.Log("Smooth moe");
             yield return incomingContext.StartCoroutine(incomingContext.SmoothMovePlayer(player, incomingContext.linePositions[0]));
         }
     }
@@ -138,4 +153,12 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
             incomingContext._arrayOfLevers[i].GetComponent<Lever>().leverActive = true;
         }
     }
+
+    public IEnumerator MovePlayer(Russian_Balloon incomingContext)
+    {
+        yield return new WaitForSeconds(1.2f);
+        yield return levelOneInputref.StartCoroutine(levelOneInputref.MoveThroughStagePositions(incomingContext.exitPathPositions));
+        //yield return levelOneInputref.StartCoroutine(levelOneInputref.MoveToLeverPoint(levelOneInputref.leverSelectionPoints[0]));
+    }
+
 }
