@@ -7,6 +7,7 @@ public class LevelOneInput : MonoBehaviour
 
     [SerializeField] public Transform[] leverSelectionPoints;  // Define lever selection points on the stage
     [SerializeField] private float moveSpeed = 5f;  // Define movement speed
+    [SerializeField] private Animator animator;
     private float positionRotationSpeed = 5f;
     private float stageRotationSpeed = 20f;
 
@@ -22,6 +23,7 @@ public class LevelOneInput : MonoBehaviour
 
     void Start()
     {
+        animator = gameObject.GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -35,6 +37,15 @@ public class LevelOneInput : MonoBehaviour
         else if (!isInStageArea && !isMoving)
         {
             RotateCharacter(-90f);
+        }
+
+        if (isMoving)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
     }
 
