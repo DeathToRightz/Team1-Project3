@@ -23,7 +23,7 @@ public class LevelOneInput : MonoBehaviour
 
     void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+        animator = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -34,7 +34,7 @@ public class LevelOneInput : MonoBehaviour
         {
             RotateCharacter(90f);
         }
-        else if (!isInStageArea && !isMoving)
+        else if (!isInStageArea && !isMoving) // This causes the snap after selecting lever
         {
             RotateCharacter(-90f);
         }
@@ -157,6 +157,7 @@ public class LevelOneInput : MonoBehaviour
 
             // Apply the new rotation while keeping X and Z axis unchanged
             transform.rotation = Quaternion.Euler(currentRotation.x, newRotationY, currentRotation.z);
+           
         }
         else
         {
@@ -164,6 +165,16 @@ public class LevelOneInput : MonoBehaviour
 
             // Snap instantly to the target rotation by setting the rotation directly
             transform.rotation = Quaternion.Euler(currentRotation.x, targetRotation, currentRotation.z);
+           
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.name == "Exit Stage Pos3")
+        {
+            Debug.Log("Off stage");
+            isInStageArea = false;
         }
     }
 

@@ -20,26 +20,27 @@ public class BalloonStateRandomizeBadLever : BalloonMiniGamBaseState
         switch (badLeverIndex) //Jancy added this
         {
             case 0:
-
+                Debug.Log("lever 1 set");
                 incomingContext._arrayOfLevers[0].tag = incomingContext.explosiveTagName;
                 break;
             case 1:
-
+                Debug.Log("lever 2 set");
                 incomingContext._arrayOfLevers[1].tag = incomingContext.explosiveTagName;
                 break;
             case 2:
-
+                Debug.Log("lever 3 set");
                 incomingContext._arrayOfLevers[2].tag = incomingContext.explosiveTagName;
                 break;
             case 3:
-
+                Debug.Log("lever 4 set");
                 incomingContext._arrayOfLevers[3].tag = incomingContext.explosiveTagName;
                 break;
             case 4:
+                Debug.Log("lever 5 set");
                 incomingContext._arrayOfLevers[4].tag = incomingContext.explosiveTagName;
                 break;
-            default:
-                Debug.LogWarning("Setting up explosive lever went outside of limit");
+            case 5:
+                incomingContext._arrayOfLevers[5].tag = incomingContext.explosiveTagName;
                 break;
         }
 

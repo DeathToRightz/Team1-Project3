@@ -8,10 +8,6 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
     //Lever lever;
     LevelOneInput levelOneInputref;
     
-    private void Awake()
-    {
-        //lever = FindObjectOfAnyType<Lever>();
-    }
     public override void OnStartState(Russian_Balloon incomingContext)
     {       
         levelOneInputref = incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>();
@@ -34,7 +30,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
     {
         if (!ChoseBadLever(incomingContext.chosenLever, incomingContext))
         {
-            incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>().isInStageArea = false;
+            //incomingContext.currentPlayerOnStage.GetComponent<LevelOneInput>().isInStageArea = false;
 
             Debug.Log("Safe");
 
