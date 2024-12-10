@@ -40,6 +40,7 @@ public class RABInput : MonoBehaviour
             {
                 _rb.AddForce(_moveDirection * moveForce * slipperyFactor, ForceMode.Acceleration);
             }
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDirection), Time.deltaTime * 40f);
         }
     }
 
@@ -47,6 +48,7 @@ public class RABInput : MonoBehaviour
     {
         // Convert 2d input into 3D movement direction for XZ plane
         _moveDirection = input != Vector2.zero ? new Vector3(input.x, 0, input.y).normalized : Vector3.zero;
+       
 
     }
 
