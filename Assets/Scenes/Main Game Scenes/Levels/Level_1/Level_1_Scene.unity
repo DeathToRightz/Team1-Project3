@@ -1210,6 +1210,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &274635953
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 274635954}
+  m_Layer: 0
+  m_Name: Exit Stage Pos3
+  m_TagString: Untagged
+  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &274635954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274635953}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.957, y: 6.9, z: -15.152}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 607637201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &283489710
 Mesh:
   m_ObjectHideFlags: 0
@@ -1954,6 +1985,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1536178778}
+  - {fileID: 274635954}
   - {fileID: 732203004}
   - {fileID: 2004363802}
   m_Father: {fileID: 0}
@@ -2294,7 +2326,7 @@ Transform:
   m_GameObject: {fileID: 732203003}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.09, y: 8.4, z: -15.04}
+  m_LocalPosition: {x: 4.14, y: 8.335, z: -15.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3306,6 +3338,7 @@ MonoBehaviour:
   exitPathPositions:
   - {fileID: 2004363802}
   - {fileID: 732203004}
+  - {fileID: 274635954}
   - {fileID: 1536178778}
   linePositions:
   - {fileID: 1896641984}
@@ -4097,7 +4130,7 @@ GameObject:
   - component: {fileID: 1536178778}
   - component: {fileID: 1536178779}
   m_Layer: 0
-  m_Name: Exit Stage Pos3
+  m_Name: Exit Stage Pos4
   m_TagString: Untagged
   m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -4112,7 +4145,7 @@ Transform:
   m_GameObject: {fileID: 1536178777}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.101, y: 6.9, z: -15.152}
+  m_LocalPosition: {x: 7.577, y: 6.9, z: -15.152}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

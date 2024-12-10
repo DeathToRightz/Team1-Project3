@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class RABInput : MonoBehaviour
 {
+    private AudioSource _audioSource;
+
+    [SerializeField] AudioClip _collisionSFX;
     [SerializeField] private float moveForce = 20f; //Force applied for movement 
     [SerializeField] private float maxSpeed = 5f; //Max rolling speed
     private float drag = 2f; //Deceleration when input is stopped
@@ -21,6 +24,7 @@ public class RABInput : MonoBehaviour
 
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         _rb = GetComponent<Rigidbody>();
         _rb.drag = drag;
     }
@@ -80,6 +84,7 @@ public class RABInput : MonoBehaviour
             {
                 // Apply force to the other player's rigidbody
                 otherRb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
+                _audioSource.PlayOneShot(_collisionSFX);
             }
             else
             {

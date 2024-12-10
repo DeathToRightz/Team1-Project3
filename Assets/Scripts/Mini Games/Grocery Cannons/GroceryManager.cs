@@ -44,7 +44,6 @@ public class GroceryManager : MonoBehaviour
         PlayerTwoText.text = "PlayerTwoPoints: " + PlayerTwoScore;
         if (!winnerDetermined && (blockCount <= 0 || level3Timer.timeRemaining <= 0f))
         {
-            lookAtReticle.canShoot = true;
             DetermineWinner();
         }
     }
@@ -86,20 +85,21 @@ public class GroceryManager : MonoBehaviour
 
     public void EndGame()
     {
-        if (roundTranker.playerOneWins > 1 || roundTranker.playerTwoWins > 1)
+        if (roundTranker.playerOneWins == 2 || roundTranker.playerTwoWins == 2)
         {
             if (roundTranker.playerOneWins > roundTranker.playerTwoWins)
             {
-                winText.text = "Player One Wins";
+                //winText.text = "Player One Wins";
+                FadeScreen.instance.FadeOut(3, true, "Level_3_Scene_PlayerOneWin");
             }
             else if (roundTranker.playerOneWins < roundTranker.playerTwoWins)
             {
-                winText.text = "Player Two Wins";
+                //winText.text = "Player Two Wins";
+                FadeScreen.instance.FadeOut(3, true, "Level_3_Scene PlayerTwoWin");
             }
-            FadeScreen.instance.FadeOut(3, true, "Main Menu");
             isGameOver = true;
         }
-        else if (roundTranker.playerOneWins > 1 && roundTranker.playerTwoWins > 1 && roundTranker.currentRound == 2)
+        else if (roundTranker.playerOneWins == 1 && roundTranker.playerTwoWins == 1 && roundTranker.currentRound == 3)
         {
             TieEndGame();
         }
@@ -107,7 +107,7 @@ public class GroceryManager : MonoBehaviour
 
     public void TieEndGame()
     {
-        winText.text = "You guys are Trash. Touch some grass";
+        //winText.text = "You guys are Trash. Touch some grass";
         FadeScreen.instance.FadeOut(3, true, "Main Menu");
         isGameOver = true;
     }
@@ -124,6 +124,7 @@ public class GroceryManager : MonoBehaviour
             winnerDetermined = false;
             PlayerOneScore = 0;
             PlayerTwoScore = 0;
+            lookAtReticle.canShoot = true;
         }
     }
 }

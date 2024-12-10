@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class WinManager : MonoBehaviour
 {
     [SerializeField] float _delay = 0f;
+
     void Start()
     {
         Debug.Log("Changing");

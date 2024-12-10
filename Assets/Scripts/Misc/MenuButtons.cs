@@ -18,6 +18,23 @@ public class MenuButtons : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
+
+    private void Update()
+    {
+        
+    }
+
+    private void LoadLevel3CreditsScenes()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            FadeScreen.instance.FadeOut(3, true, "Level_3_Scene_PlayerOneWin");
+        }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            FadeScreen.instance.FadeOut(3, true, "Level_3_Scene PlayerTwoWin");
+        }
+    }
     public void OnClickStartButton()
     {
         Debug.Log("Start");
