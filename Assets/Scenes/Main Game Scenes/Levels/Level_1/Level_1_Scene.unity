@@ -11412,7 +11412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4050132144745307415, guid: 742956d9f083bf9478885230f8582c78, type: 3}
       propertyPath: m_Name
-      value: Player 2
+      value: SecondPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 9209119629262650253, guid: 742956d9f083bf9478885230f8582c78, type: 3}
       propertyPath: animator
@@ -11481,7 +11481,7 @@ PrefabInstance:
       objectReference: {fileID: 529808560}
     - target: {fileID: 2574560363654495364, guid: 85c723d3efb93cb48b835672c778bce5, type: 3}
       propertyPath: m_Name
-      value: Player 1
+      value: FirstPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 7237845262378884056, guid: 85c723d3efb93cb48b835672c778bce5, type: 3}
       propertyPath: m_LocalPosition.x
