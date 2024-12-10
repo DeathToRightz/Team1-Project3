@@ -54,7 +54,7 @@ public class MenuButtons : MonoBehaviour
     public void OnClickCreditsButton()
     {
         Debug.Log("Credits");
-        FadeScreen.instance.FadeOut(1, true, "Credits");
+        FadeScreen.instance.FadeOut(1, true, "Bathroom_Credits");
     }
 
     public void LevelOneLoad()

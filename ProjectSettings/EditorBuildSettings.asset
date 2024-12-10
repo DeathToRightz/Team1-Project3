@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Game Scenes/Main Menu.unity
     guid: cd21d1de631af3c48abca72cf0182508
   - enabled: 1
-    path: Assets/Scenes/Credits.unity
-    guid: 7ca8e022f8d63124d859c8132930d070
+    path: Assets/Scenes/Bathroom_Credits.unity
+    guid: 47bbb612aa50d6342831f5d02d23f718
   - enabled: 1
     path: Assets/Scenes/Main Game Scenes/Help Screens/Level_1_Help.unity
     guid: ba125c6237a494044bf453c7dba49e00
