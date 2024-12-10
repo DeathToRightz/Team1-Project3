@@ -40,7 +40,7 @@ public class BalloonStateWin : BalloonMiniGamBaseState
     {
         bool playerChoseBadLever = incomingContext.chosenLever.GetComponent<Lever>().tag == incomingContext.explosiveTagName;
 
-        if(incomingContext.currentPlayerOnStage.name == "FirstPlayer" && playerChoseBadLever) { SceneManager.LoadScene("Level_1_PlayerTwo Win"); }
-        else { SceneManager.LoadScene("Level_1_PlayerOne Win"); }
+        if(incomingContext.currentPlayerOnStage.name == "FirstPlayer" && playerChoseBadLever) { SceneManager.LoadScene("Level_1_PlayerOne Win"); }
+        else { SceneManager.LoadScene("Level_1_PlayerTwo Win"); }
     }
 }

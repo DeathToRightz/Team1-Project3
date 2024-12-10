@@ -81,7 +81,7 @@ public class BalloonStateCheckingLever : BalloonMiniGamBaseState
     private IEnumerator MovePlayerOffStage(GameObject player, Transform[] pathPositions, Russian_Balloon incomingContext)
     {
         LevelOneInput levelOneRef = player.GetComponent<LevelOneInput>();
-
+        player.GetComponent<LevelOneInput>().isInStageArea = false;
         yield return new WaitForSeconds(1.2f);
 
         for(int i = 0; i < pathPositions.Length; i++)

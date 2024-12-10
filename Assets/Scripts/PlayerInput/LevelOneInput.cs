@@ -53,9 +53,8 @@ public class LevelOneInput : MonoBehaviour
     // Move the player to a specific position (lever or stage position)
     public IEnumerator MoveThroughStagePositions(Transform[] stagePositions)
     {
-       // currentPointIndex = 0;
         isMoving = true;
-        
+        currentPointIndex = 0;
         for (int i = 0; i < stagePositions.Length; i++)
         {
             while (Vector3.Distance(transform.position, stagePositions[i].position) > 0.1f)
@@ -67,7 +66,6 @@ public class LevelOneInput : MonoBehaviour
                 yield return null;
             }
         }
-
         isMoving = false;
     }
    
@@ -101,15 +99,12 @@ public class LevelOneInput : MonoBehaviour
     // Move player to a lever point
     public IEnumerator MoveToLeverPoint(Transform targetPoint)
     {
-        isInStageArea = true;
         isMoving = true;
-
         while (Vector3.Distance(transform.position, targetPoint.position) > 0.1f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPoint.position, moveSpeed * Time.deltaTime);
             yield return null;
         }
-
         isMoving = false;
     }
 
@@ -171,10 +166,15 @@ public class LevelOneInput : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "Exit Stage Pos3")
+        if(other.name == "Exit Stage Pos4")
         {
             Debug.Log("Off stage");
             isInStageArea = false;
+        }
+        else if(other.name == "MovementArea")
+        {
+            Debug.Log("On Stage");
+            isInStageArea = true;
         }
     }
 

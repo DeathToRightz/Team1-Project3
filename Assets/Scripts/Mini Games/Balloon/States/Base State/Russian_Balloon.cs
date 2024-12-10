@@ -65,6 +65,8 @@ public class Russian_Balloon : MonoBehaviour
         //TO SEE WHAT THIS DOES move to the BalloonStateRandomizeBadLever script
         _currentState.OnStartState(this); // this refers to this script meaning where ever this is called we have info from here that may be needed else where
 
+
+        levelOneInput = FindAnyObjectByType<LevelOneInput>();
         //currentPlayerOnStage = playerQueue.Dequeue();
         //nextPlayer = playerQueue.Peek();
         //StartCoroutine(ProcessQueue());
@@ -178,7 +180,7 @@ public class Russian_Balloon : MonoBehaviour
     {
         // Define the target position on the stage (in this case, `stageStartPosition`)
         Vector3 targetPosition = stagePositions[0].position;
-
+        levelOneInput.isInStageArea = true;
         // While the player hasn't yet reached the target position
         while (Vector3.Distance(player.transform.position, targetPosition) > 0.1f)
         {
